@@ -1,0 +1,60 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Characters/Pets/Pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Animations/PetsAnimator/Fox/goSleepLeft.tres" type="Animation" id=2]
+[ext_resource path="res://Characters/Pets/Fox/Fox.gd" type="Script" id=3]
+[ext_resource path="res://Animations/PetsAnimator/Fox/idleLeft.tres" type="Animation" id=4]
+[ext_resource path="res://PixelArt/Characters/Pets/fox.png" type="Texture" id=5]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=6]
+[ext_resource path="res://Animations/PetsAnimator/Fox/idleRight.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/PetsAnimator/Fox/runLeft.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/PetsAnimator/Fox/runRight.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/PetsAnimator/Fox/goSleepRight.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/PetsAnimator/Fox/sleepRight.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/PetsAnimator/Fox/sleepLeft.tres" type="Animation" id=12]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.375
+height = 9.58678
+
+[node name="Fox" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+pet_name = "Fox"
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -11 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 8
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -3 )
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+autoplay = "idleRight"
+anims/goSleepLeft = ExtResource( 2 )
+anims/goSleepRight = ExtResource( 10 )
+anims/idleLeft = ExtResource( 4 )
+anims/idleRight = ExtResource( 7 )
+anims/runLeft = ExtResource( 8 )
+anims/runRight = ExtResource( 9 )
+anims/sleepLeft = ExtResource( 12 )
+anims/sleepRight = ExtResource( 11 )
+
+[node name="LightSource" parent="." index="9"]
+position = Vector2( 0, -8 )
+
+[node name="Label" parent="." index="11"]
+text = "FOX"
+
+[editable path="Event"]

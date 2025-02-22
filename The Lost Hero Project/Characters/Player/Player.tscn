@@ -1,0 +1,250 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://PixelArt/Characters/Players/DefaultCharacter/body_default.png" type="Texture" id=3]
+[ext_resource path="res://PixelArt/Characters/Players/DefaultCharacter/head_default.png" type="Texture" id=4]
+[ext_resource path="res://PixelArt/Characters/Players/DefaultCharacter/shadow_default.png" type="Texture" id=5]
+[ext_resource path="res://PixelArt/Characters/Players/DefaultCharacter/shoes_default.png" type="Texture" id=6]
+[ext_resource path="res://Others/Effects/FootParticles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/Player/PlayerFSM.gd" type="Script" id=8]
+[ext_resource path="res://Animations/Player/dodgeRight.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Player/dodgeLeft.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Player/runRight.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Player/runLeft.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Player/idleRight.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Player/idleLeft.tres" type="Animation" id=14]
+[ext_resource path="res://Overlap/PickupZone.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=16]
+[ext_resource path="res://Weapons/HandItems/BasicSword.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Others/SFX/footstep.wav" type="AudioStream" id=18]
+[ext_resource path="res://Others/SFX/item_collect.wav" type="AudioStream" id=19]
+[ext_resource path="res://Others/SFX/coin.wav" type="AudioStream" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 16 )
+shader_param/active = false
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 16 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 2.7079
+height = 7.30813
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 6.31902
+height = 8.82063
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 27.0
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "dodgeRight"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "dodgeRight"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "dodgeLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "dodgeLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=10]
+blend_point_0/node = SubResource( 6 )
+blend_point_0/pos = Vector2( 1, 1 )
+blend_point_1/node = SubResource( 7 )
+blend_point_1/pos = Vector2( 1, -1 )
+blend_point_2/node = SubResource( 8 )
+blend_point_2/pos = Vector2( -1, 1 )
+blend_point_3/node = SubResource( 9 )
+blend_point_3/pos = Vector2( -1, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idleLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( 1, 1 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( -1, 1 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 1, -1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( -1, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "runLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "runLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "runRight"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "runRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
+blend_point_0/pos = Vector2( -1, 1 )
+blend_point_1/node = SubResource( 17 )
+blend_point_1/pos = Vector2( -1, -1 )
+blend_point_2/node = SubResource( 18 )
+blend_point_2/pos = Vector2( 1, 1 )
+blend_point_3/node = SubResource( 19 )
+blend_point_3/pos = Vector2( 1, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=27]
+states/Dodge/node = SubResource( 10 )
+states/Dodge/position = Vector2( 605, -3 )
+states/Idle/node = SubResource( 15 )
+states/Idle/position = Vector2( 499, 137 )
+states/Run/node = SubResource( 20 )
+states/Run/position = Vector2( 720, 138 )
+transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ), "Idle", "Dodge", SubResource( 23 ), "Dodge", "Idle", SubResource( 24 ), "Dodge", "Run", SubResource( 25 ), "Run", "Dodge", SubResource( 26 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -38, 23 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_layer = 96
+collision_mask = 393217
+script = ExtResource( 2 )
+max_health = 8
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource( 8 )
+
+[node name="Body" parent="." index="1"]
+material = SubResource( 1 )
+scale = Vector2( 1.3, 1.3 )
+
+[node name="Shadow" type="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -14 )
+texture = ExtResource( 5 )
+hframes = 8
+vframes = 6
+
+[node name="FootParticles" parent="Body" index="1" instance=ExtResource( 7 )]
+position = Vector2( -3.5, -2.5 )
+
+[node name="Shoes" type="Sprite" parent="Body" index="2"]
+material = SubResource( 2 )
+use_parent_material = true
+position = Vector2( 0, -14 )
+texture = ExtResource( 6 )
+hframes = 8
+vframes = 6
+
+[node name="Body" type="Sprite" parent="Body" index="3"]
+use_parent_material = true
+position = Vector2( 0, -14 )
+texture = ExtResource( 3 )
+hframes = 8
+vframes = 6
+
+[node name="Pivot" parent="Body" index="4"]
+position = Vector2( 0, -11 )
+
+[node name="BasicSword" parent="Body/Pivot" index="0" instance=ExtResource( 17 )]
+
+[node name="Head" type="Sprite" parent="Body" index="5"]
+use_parent_material = true
+position = Vector2( 0, -14 )
+texture = ExtResource( 4 )
+hframes = 8
+vframes = 6
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, -4 )
+rotation = -1.5708
+shape = SubResource( 3 )
+
+[node name="DodgeCooldown" parent="Timers" index="2"]
+one_shot = true
+
+[node name="Hitbox" parent="." index="4"]
+collision_layer = 2147483648
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -13.5 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="6"]
+anims/dodgeLeft = ExtResource( 10 )
+anims/dodgeRight = ExtResource( 9 )
+anims/idleLeft = ExtResource( 14 )
+anims/idleRight = ExtResource( 13 )
+anims/runLeft = ExtResource( 12 )
+anims/runRight = ExtResource( 11 )
+
+[node name="PickupZone" parent="." index="7" instance=ExtResource( 15 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone" index="0"]
+position = Vector2( 0, -8 )
+shape = SubResource( 5 )
+
+[node name="LightSource" parent="." index="8"]
+position = Vector2( 0, -16 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource( 27 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 28 )
+parameters/Dodge/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0.966915, 0.144509 )
+parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="Label" type="Label" parent="." index="11"]
+visible = false
+margin_left = -16.0
+margin_top = -48.0
+margin_right = 24.0
+margin_bottom = -34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FootstepAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" index="1"]
+stream = ExtResource( 18 )
+volume_db = 5.0
+bus = "Effects"
+
+[node name="FootstepTimer" type="Timer" parent="Audio/FootstepAudioStreamPlayer" index="0"]
+one_shot = true
+
+[node name="CoinAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" index="2"]
+stream = ExtResource( 20 )
+
+[node name="ItemPickAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" index="3"]
+stream = ExtResource( 19 )

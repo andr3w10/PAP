@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Weapons/Entities/Arrow.gd" type="Script" id=1]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PixelArt/Weapons/arrow.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.52272
+height = 15.1075
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 2.52508
+height = 15.1075
+
+[node name="Arrow" type="KinematicBody2D"]
+collision_layer = 2147516416
+collision_mask = 32768
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="DamageArea" parent="." instance=ExtResource( 2 )]
+collision_layer = 2147483648
+damage_amount = 2
+knockback_strength = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+[connection signal="hitteded" from="DamageArea" to="." method="_on_DamageArea_hitteded"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

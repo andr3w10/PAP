@@ -1,0 +1,173 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://UI/Menus/Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Inventory/Hotbar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/DateTime/DateTimeUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/UI.gd" type="Script" id=4]
+[ext_resource path="res://Animations/MenusAnimator/open_menu.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/MenusAnimator/close_menu.tres" type="Animation" id=6]
+[ext_resource path="res://UI/Chest/ChestUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Dialogue/DialogueManager.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Stats/DodgeBarUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Animations/MenusAnimator/open_chest_ui.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/MenusAnimator/close_chest_ui.tres" type="Animation" id=11]
+[ext_resource path="res://UI/Stats/PlayerStatsUI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Animations/MenusAnimator/open_dialogue_ui.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/MenusAnimator/close_dialogue_ui.tres" type="Animation" id=14]
+[ext_resource path="res://UI/TextDisplay.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/RightDisplayBox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Animations/MenusAnimator/close_right_display_box.tres" type="Animation" id=17]
+[ext_resource path="res://Animations/MenusAnimator/open_right_display_box.tres" type="Animation" id=18]
+[ext_resource path="res://Others/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://UI/SpellBook/SpellBookUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Animations/MenusAnimator/open_spellbook.tres" type="Animation" id=21]
+[ext_resource path="res://Animations/MenusAnimator/close_spellbook.tres" type="Animation" id=22]
+[ext_resource path="res://Animations/MenusAnimator/flash.tres" type="Animation" id=23]
+[ext_resource path="res://UI/Stats/BossHealthBarUI.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Animations/MenusAnimator/UIhide_boss_healthbar.tres" type="Animation" id=25]
+[ext_resource path="res://UI/ClosetUI.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Animations/MenusAnimator/open_closet.tres" type="Animation" id=27]
+[ext_resource path="res://Animations/MenusAnimator/close_closet.tres" type="Animation" id=28]
+[ext_resource path="res://UI/PetHouseUI.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Animations/MenusAnimator/close_pethouse.tres" type="Animation" id=30]
+[ext_resource path="res://Animations/MenusAnimator/open_pethouse.tres" type="Animation" id=31]
+[ext_resource path="res://UI/GameOverUI.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Animations/MenusAnimator/show_game_over.tres" type="Animation" id=33]
+[ext_resource path="res://Animations/MenusAnimator/hide_game_over.tres" type="Animation" id=34]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 19 )
+
+[node name="UI" type="CanvasLayer"]
+pause_mode = 2
+layer = 100
+script = ExtResource( 4 )
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.392157 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopTextDisplay" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="Label" parent="TopTextDisplay" index="0"]
+custom_fonts/font = SubResource( 1 )
+
+[node name="BossHealthBarUI" parent="." instance=ExtResource( 24 )]
+visible = false
+margin_left = 179.0
+margin_top = -4.0
+margin_right = 390.0
+margin_bottom = 9.0
+
+[node name="BotTextDisplay" parent="." instance=ExtResource( 15 )]
+visible = false
+anchor_top = 0.725
+anchor_bottom = 0.85
+margin_right = 0.12793
+
+[node name="Label" parent="BotTextDisplay" index="0"]
+custom_fonts/font = SubResource( 2 )
+
+[node name="RightDisplayBox" parent="." instance=ExtResource( 16 )]
+visible = false
+margin_left = -0.103973
+
+[node name="Menu" parent="." instance=ExtResource( 1 )]
+visible = false
+margin_bottom = -0.000976563
+
+[node name="ClosetUI" parent="." instance=ExtResource( 26 )]
+visible = false
+margin_top = 320.0
+margin_bottom = 320.0
+
+[node name="PetHouseUI" parent="." instance=ExtResource( 29 )]
+margin_top = 320.0
+margin_right = -3.0
+margin_bottom = 320.0
+
+[node name="SpellBookUI" parent="." instance=ExtResource( 20 )]
+visible = false
+margin_top = 320.0
+margin_bottom = 320.0
+
+[node name="ChestUI" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="ChestInventoryUI" parent="ChestUI" index="0"]
+margin_right = -0.128052
+
+[node name="PlayerInventoryUI" parent="ChestUI" index="1"]
+margin_right = 0.0
+
+[node name="Hotbar" parent="." instance=ExtResource( 2 )]
+
+[node name="PlayerStatsUI" parent="." instance=ExtResource( 12 )]
+
+[node name="DodgeBarUI" parent="." instance=ExtResource( 9 )]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 8.0
+margin_bottom = 24.0
+
+[node name="DateTimeUI" parent="." instance=ExtResource( 3 )]
+margin_bottom = 56.0
+
+[node name="DialogueManager" parent="." instance=ExtResource( 8 )]
+margin_left = -0.595
+margin_top = 200.0
+margin_right = -0.594971
+margin_bottom = 200.0
+
+[node name="GameOverUI" parent="." instance=ExtResource( 32 )]
+visible = false
+margin_top = 320.0
+margin_bottom = 320.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close_chest_ui = ExtResource( 11 )
+anims/close_closet = ExtResource( 28 )
+anims/close_dialogue_ui = ExtResource( 14 )
+anims/close_menu = ExtResource( 6 )
+anims/close_pethouse = ExtResource( 30 )
+anims/close_right_display_box = ExtResource( 17 )
+anims/close_spellbook = ExtResource( 22 )
+anims/flash = ExtResource( 23 )
+anims/hide_boss_healthbar = ExtResource( 25 )
+anims/hide_game_over = ExtResource( 34 )
+anims/open_chest_ui = ExtResource( 10 )
+anims/open_closet = ExtResource( 27 )
+anims/open_dialogue_ui = ExtResource( 13 )
+anims/open_menu = ExtResource( 5 )
+anims/open_pethouse = ExtResource( 31 )
+anims/open_right_display_box = ExtResource( 18 )
+anims/open_spellbook = ExtResource( 21 )
+anims/show_game_over = ExtResource( 33 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="color_rect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 568.0
+margin_bottom = 320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="TopTextDisplay"]
+[editable path="BotTextDisplay"]
+[editable path="ChestUI"]

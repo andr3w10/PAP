@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Animations/WeaponAnimator/swipe_left.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/WeaponAnimator/swipe_right.tres" type="Animation" id=5]
+
+[node name="Weapon" type="Node2D"]
+use_parent_material = true
+rotation = -1.5708
+script = ExtResource( 2 )
+
+[node name="Pivot" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2( 8, 0 )
+rotation = -0.785398
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
+use_parent_material = true
+position = Vector2( 2, 0 )
+rotation = 1.57079
+offset = Vector2( 0, -6 )
+
+[node name="DamageArea" parent="Pivot" instance=ExtResource( 3 )]
+collision_layer = 526336
+
+[node name="AttackAnimator" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/swipe_left = ExtResource( 4 )
+anims/swipe_right = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="BasicCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpecialCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Effects"

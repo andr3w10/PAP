@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Characters/Pets/Pet.gd" type="Script" id=1]
+[ext_resource path="res://AI/AI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=3]
+[ext_resource path="res://Characters/Pets/PetFSM.gd" type="Script" id=4]
+[ext_resource path="res://Events/Event.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Overlap/NeighborDetector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Others/Fonts/joystix monospace.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://PixelArt/UI/press_e_to_sit.png" type="Texture" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.4924
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Pet" instance=ExtResource( 2 )]
+collision_layer = 256
+script = ExtResource( 1 )
+group = 2
+
+[node name="StateMachine" parent="." index="1"]
+script = ExtResource( 4 )
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="0"]
+
+[node name="NeighborDetector" parent="." index="7" instance=ExtResource( 6 )]
+
+[node name="LightSource" parent="." index="9"]
+radius = 40
+strength = 0.3
+
+[node name="Emote" parent="." index="10"]
+position = Vector2( 16, -32 )
+
+[node name="Label" type="Label" parent="." index="11"]
+visible = false
+margin_left = -24.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 24.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Event" parent="." index="12" instance=ExtResource( 5 )]
+body_sprite_path = NodePath("../Body/Sprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Event/EventTrigger" index="0"]
+shape = SubResource( 2 )
+
+[node name="press_e_to_sit" type="Sprite" parent="Event" index="3"]
+visible = false
+position = Vector2( 0.298476, 5.88903 )
+scale = Vector2( 0.132328, 0.132328 )
+texture = ExtResource( 8 )
+
+[node name="sleep_time_left" type="Label" parent="." index="13"]
+visible = false
+margin_left = -8.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = -16.0
+custom_fonts/font = SubResource( 3 )
+text = "99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Timers/SleepTimer" to="." method="_on_SleepTimer_timeout"]
+
+[editable path="Event"]

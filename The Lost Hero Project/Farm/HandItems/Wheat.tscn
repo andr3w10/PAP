@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Farm/FarmResource.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PixelArt/Items/ItemsIcons/Wheat.png" type="Texture" id=2]
+
+[node name="Wheat" instance=ExtResource( 1 )]
+item_name = "Wheat"
+crop_path = "res://Farm/Crops/Wheat.tscn"
+
+[node name="Sprite" parent="Pivot" index="0"]
+texture = ExtResource( 2 )

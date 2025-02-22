@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PixelArt/Characters/NPCs/elizabeth.png" type="Texture" id=2]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=3]
+[ext_resource path="res://Characters/NPCs/Elizabeth/Elizabeth.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 3.00002
+height = 10.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 9.0
+
+[node name="Elizabeth" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+move_speed = 5.0
+wander_speed = 3.0
+npc_name = "Elizabeth"
+default_dialogue_idx = [ 2, 3 ]
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" parent="Body" index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="5"]
+position = Vector2( 0, -2 )
+rotation = -1.5708
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="." index="14"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Event"]

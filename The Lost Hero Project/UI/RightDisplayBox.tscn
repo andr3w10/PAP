@@ -1,0 +1,420 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/TutorialUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PixelArt/UI/ui_panel.png" type="Texture" id=2]
+[ext_resource path="res://UI/RightDisplayBox.gd" type="Script" id=3]
+[ext_resource path="res://Others/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://PixelArt/UI/green_check_ui.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 4 )
+
+[node name="RightDisplayBox" type="Control"]
+anchor_left = 0.803
+anchor_top = 0.2
+anchor_right = 1.028
+anchor_bottom = 0.8
+margin_left = -0.104004
+margin_right = 0.0960083
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 92.0
+margin_right = 104.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="TutorialUI" parent="." instance=ExtResource( 1 )]
+visible = false
+margin_top = -16.0
+margin_bottom = -16.0
+
+[node name="Move" parent="TutorialUI" index="0"]
+margin_left = 40.0
+margin_top = 64.0
+margin_right = 40.0
+margin_bottom = 64.0
+
+[node name="W" parent="TutorialUI/Move" index="0"]
+frame = 0
+
+[node name="A" parent="TutorialUI/Move" index="1"]
+frame = 3
+
+[node name="S" parent="TutorialUI/Move" index="2"]
+frame = 1
+
+[node name="D" parent="TutorialUI/Move" index="3"]
+frame = 4
+
+[node name="Label" parent="TutorialUI/Move" index="4"]
+margin_top = 14.0
+margin_bottom = 30.0
+
+[node name="Interact" parent="TutorialUI" index="1"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 64.0
+
+[node name="E" parent="TutorialUI/Interact" index="0"]
+frame = 2
+
+[node name="Label" parent="TutorialUI/Interact" index="1"]
+margin_left = -4.0
+margin_top = 14.0
+margin_right = 68.0
+margin_bottom = 30.0
+
+[node name="Dodge" parent="TutorialUI" index="2"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 64.0
+
+[node name="SPACE" parent="TutorialUI/Dodge" index="0"]
+frame = 5
+
+[node name="Label" parent="TutorialUI/Dodge" index="1"]
+margin_top = 14.0
+margin_bottom = 30.0
+
+[node name="Menu" parent="TutorialUI" index="3"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 64.0
+
+[node name="TAB" parent="TutorialUI/Menu" index="0"]
+frame = 4
+
+[node name="ESC" parent="TutorialUI/Menu" index="1"]
+frame = 0
+
+[node name="Label" parent="TutorialUI/Menu" index="2"]
+margin_left = 9.0
+margin_top = 14.0
+margin_right = 57.0
+margin_bottom = 30.0
+
+[node name="PrimaryAttack" parent="TutorialUI" index="4"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 64.0
+
+[node name="LeftClick" parent="TutorialUI/PrimaryAttack" index="0"]
+frame = 1
+
+[node name="Label" parent="TutorialUI/PrimaryAttack" index="1"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 61.0
+margin_bottom = 39.0
+
+[node name="SecondaryAttack" parent="TutorialUI" index="5"]
+visible = false
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 64.0
+
+[node name="RightClick" parent="TutorialUI/SecondaryAttack" index="0"]
+frame = 1
+
+[node name="Label" parent="TutorialUI/SecondaryAttack" index="1"]
+margin_left = -3.0
+margin_top = 10.0
+margin_right = 69.0
+margin_bottom = 39.0
+
+[node name="Hotbar" parent="TutorialUI" index="6"]
+visible = false
+margin_left = 38.0
+margin_top = 64.0
+margin_right = 38.0
+margin_bottom = 64.0
+
+[node name="ScrollUP" parent="TutorialUI/Hotbar" index="0"]
+frame = 1
+
+[node name="ScrollDOWN" parent="TutorialUI/Hotbar" index="1"]
+frame = 0
+
+[node name="Label" parent="TutorialUI/Hotbar" index="2"]
+margin_left = -2.0
+margin_top = 20.0
+margin_right = 54.0
+margin_bottom = 44.0
+
+[node name="SaveGame" parent="TutorialUI" index="7"]
+margin_left = 36.0
+margin_top = 64.0
+margin_right = 36.0
+margin_bottom = 64.0
+
+[node name="Label" parent="TutorialUI/SaveGame" index="1"]
+margin_top = 8.0
+margin_bottom = 32.0
+
+[node name="Completed" parent="TutorialUI" index="8"]
+margin_left = 44.0
+margin_top = 56.0
+margin_right = 84.0
+margin_bottom = 96.0
+
+[node name="GameSavedUI" type="Control" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 112.0
+margin_bottom = 176.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GameSavedUI"]
+margin_left = 19.0
+margin_top = 80.0
+margin_right = 75.0
+margin_bottom = 136.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameSavedUI"]
+margin_left = -12.0
+margin_top = 26.0
+margin_right = 100.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "GAME SAVED"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="GameSavedUI"]
+margin_left = -12.0
+margin_top = 42.0
+margin_right = 100.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 3 )
+text = "SUCCESSFULLY"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="CollectedItemsUI" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 104.0
+margin_bottom = 176.0
+
+[node name="Labels" type="Control" parent="CollectedItemsUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="0" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_right = -11.0
+margin_bottom = -140.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="1" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 20.0
+margin_right = -11.0
+margin_bottom = -120.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="2" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 40.0
+margin_right = -11.0
+margin_bottom = -100.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="3" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 60.0
+margin_right = -11.0
+margin_bottom = -80.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="4" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 80.0
+margin_right = -11.0
+margin_bottom = -60.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="5" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 100.0
+margin_right = -11.0
+margin_bottom = -40.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="6" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 120.0
+margin_right = -11.0
+margin_bottom = -20.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="7" type="Label" parent="CollectedItemsUI/Labels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 140.0
+margin_right = -11.0
+custom_colors/font_color = Color( 0.764706, 0.639216, 0.509804, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 2
+
+[node name="Imgs" type="Control" parent="CollectedItemsUI"]
+margin_left = 83.0
+margin_right = 103.0
+margin_bottom = 160.0
+
+[node name="0" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_right = 20.0
+margin_bottom = 20.0
+expand = true
+
+[node name="1" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 40.0
+expand = true
+
+[node name="2" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 40.0
+margin_right = 20.0
+margin_bottom = 60.0
+expand = true
+
+[node name="3" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 60.0
+margin_right = 20.0
+margin_bottom = 80.0
+expand = true
+
+[node name="4" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 80.0
+margin_right = 20.0
+margin_bottom = 100.0
+expand = true
+
+[node name="5" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 100.0
+margin_right = 20.0
+margin_bottom = 120.0
+expand = true
+
+[node name="6" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 120.0
+margin_right = 20.0
+margin_bottom = 140.0
+expand = true
+
+[node name="7" type="TextureRect" parent="CollectedItemsUI/Imgs"]
+margin_top = 140.0
+margin_right = 20.0
+margin_bottom = 160.0
+expand = true
+
+[node name="ItemsTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="ItemsTimer" to="." method="_on_ItemsTimer_timeout"]
+
+[editable path="TutorialUI"]

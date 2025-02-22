@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Animations/DamageAnimator/damage.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/DamageAnimator/invulnerability.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/DamageAnimator/reset.tres" type="Animation" id=5]
+[ext_resource path="res://Characters/StateMachine.gd" type="Script" id=6]
+[ext_resource path="res://Others/SFX/damaged.wav" type="AudioStream" id=7]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=8]
+[ext_resource path="res://Lighting/LightSource.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Emotes/Emote.tscn" type="PackedScene" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/active = true
+
+[node name="Character" type="KinematicBody2D"]
+collision_layer = 32
+script = ExtResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="Body" type="Node2D" parent="."]
+material = SubResource( 1 )
+
+[node name="Pivot" type="Node2D" parent="Body"]
+use_parent_material = true
+position = Vector2( 0, -12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackCooldown" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true
+
+[node name="DodgeTimer" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true
+
+[node name="DodgeCooldown" type="Timer" parent="Timers"]
+
+[node name="AttackPreparation" type="Timer" parent="Timers"]
+wait_time = 0.8
+one_shot = true
+
+[node name="WanderTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AlertTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="SleepTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_layer = 0
+collision_mask = 0
+immunity_duration = 0.2
+
+[node name="DamageAnimator" type="AnimationPlayer" parent="."]
+autoplay = "reset"
+anims/damage = ExtResource( 3 )
+anims/invulnerability = ExtResource( 4 )
+anims/reset = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="LightSource" parent="." instance=ExtResource( 9 )]
+radius = 80
+strength = 0.6
+
+[node name="Emote" parent="." instance=ExtResource( 10 )]
+position = Vector2( 11, -24 )
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DamagedAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
+bus = "Effects"
+
+[connection signal="damaged" from="Hitbox" to="." method="_on_Hitbox_damaged"]

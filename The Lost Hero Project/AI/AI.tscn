@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://AI/AI.gd" type="Script" id=2]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=3]
+[ext_resource path="res://AI/DebugNode.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+
+[node name="AI" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+debugNodePath = NodePath("DebugNode")
+
+[node name="DebugNode" parent="." index="0" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )

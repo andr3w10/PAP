@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Weapons/HandItems/Hoe.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PixelArt/Tools/hoe.png" type="Texture" id=3]
+[ext_resource path="res://Others/SFX/sword.wav" type="AudioStream" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.70849
+height = 2.57255
+
+[node name="Hoe" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+item_name = "Hoe"
+tool_type = "hoe"
+
+[node name="Sprite" parent="Pivot" index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DamageArea" index="0"]
+position = Vector2( 15.3639, 4.94975 )
+shape = SubResource( 1 )
+
+[node name="AttackAudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 4 )

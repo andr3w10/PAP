@@ -1,0 +1,56 @@
+{
+	"Fire":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Cast a fireball",
+		"Cast": "fireball"
+	},
+	"Water":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Creates a water splash that damage enemies",
+		"Cast": "splash"
+	},
+	"Grass":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Create a bush that prevent passage to all beings",
+		"Cast": "bush"
+	},
+	"Earth":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Create a rock in a specific place that knock up and damage enemies",
+		"Cast": "rock"
+	},
+	"Thunder":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Create a thunder that passes through the enemies",
+		"Cast": "thunder"
+	},
+	"Wind":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Create a strong wind blast that pushes enemies in a desired direction",
+		"Cast": "wind_blast"
+	},
+	"Light":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Creates a light beam that damage enemies",
+		"Cast": "light_beam"
+	},
+	"Psychic":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Transform enemies in allies",
+		"Cast": "mind_control"
+	},
+	"Shadow":{
+		"SpellDuration": 1.0,
+		"SpellCooldown": 2.0,
+		"Description": "Teleport player to a desired place",
+		"Cast": "teleport"
+	}
+}

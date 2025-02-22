@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=1]
+[ext_resource path="res://Characters/Pets/Pet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Pets/Chameleon/Chameleon.gd" type="Script" id=3]
+[ext_resource path="res://Animations/PetsAnimator/Chameleon/idleRight.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/PetsAnimator/Chameleon/runLeft.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/PetsAnimator/Chameleon/runRight.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/PetsAnimator/Chameleon/idleLeft.tres" type="Animation" id=7]
+[ext_resource path="res://PixelArt/Characters/Pets/chameleon.png" type="Texture" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/active = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 1.9916
+height = 9.971
+
+[node name="Chameleon" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+pet_name = "Chameleon"
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -11 )
+texture = ExtResource( 8 )
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -2 )
+rotation = -1.5708
+shape = SubResource( 2 )
+one_way_collision_margin = 0.0
+
+[node name="AnimationPlayer" parent="." index="8"]
+anims/idleLeft = ExtResource( 7 )
+anims/idleRight = ExtResource( 4 )
+anims/runLeft = ExtResource( 5 )
+anims/runRight = ExtResource( 6 )
+
+[node name="LightSource" parent="." index="9"]
+position = Vector2( 0, -8 )
+
+[node name="Label" parent="." index="11"]
+margin_left = -40.0
+margin_right = 41.0
+text = "CHAMELEON"
+
+[editable path="Event"]

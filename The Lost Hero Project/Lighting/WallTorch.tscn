@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Lighting/Torch.gd" type="Script" id=1]
+[ext_resource path="res://Lighting/LightSource.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PixelArt/Light/WallTorchFrames/1.png" type="Texture" id=3]
+[ext_resource path="res://PixelArt/Light/WallTorchFrames/2.png" type="Texture" id=4]
+[ext_resource path="res://PixelArt/Light/WallTorchFrames/3.png" type="Texture" id=5]
+[ext_resource path="res://PixelArt/Light/WallTorchFrames/4.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+} ]
+
+[node name="WallTorch" type="Node2D"]
+script = ExtResource( 1 )
+max_frames = 4
+
+[node name="LightSource" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -34 )
+color = Color( 1, 0.764706, 0.552941, 1 )
+radius = 80
+strength = 0.9
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -32 )
+frames = SubResource( 3 )
+animation = "4"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

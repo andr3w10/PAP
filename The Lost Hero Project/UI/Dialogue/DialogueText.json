@@ -1,0 +1,184 @@
+{
+	"//this is signs -> 3 digits":{},
+	
+	"000":{
+		"type": "dialogue",
+		"speaker_id": "test",
+		"portrait_id": "neutral",
+		"text": "[rainbow]This is a [shake]test[/shake][/rainbow]!",
+		"next": "001",
+	},
+	"001":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "This is the [color=blue]second[/color] part of the test!",
+		"next": "002",
+	},
+	"002":{
+		"type": "dialogue",
+		"speaker_id": "",
+		"portrait_id": "neutral",
+		"text": "And this is the [color=yellow]third[/color]!",
+	},
+	"003":{
+		"type": "dialogue",
+		"speaker_id": "",
+		"portrait_id": "neutral",
+		"text": "Hello, how are you?\nJust to you know, you need to press ENTER key to close me!",
+	},
+	
+	
+	
+	"//this is characters -> 4 digits":{},
+	
+	"0000":{
+		"type": "response",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "[shake]???\nWho are you?\nWhat are you doing here?",
+		"responses":{
+			"Hi! I am [color=blue]{player}[/color]!": { 
+				"next": "0001",
+				},
+			"Why? Thats not of your intrest!": {
+				"next": "0002",
+				},
+		},
+	},
+	
+	"0001":{
+		"type": "dialogue",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "Ohh! Hi then and welcome to the town! Here is a welcome gift!",
+		"commands": ["give Coin 50"],
+	},
+		
+	"0002":{
+		"type": "dialogue",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "You dont need to be so rude!",
+	},
+	
+	"0003":{
+		"type": "dialogue",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "This is your house!",
+	},
+	
+	"0004":{
+		"type": "dialogue",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "Hiiiii!",
+		"commands": ["give Coin 5"],
+	},
+	
+	"0005":{
+		"type": "dialogue",
+		"speaker_id": "Elizabeth",
+		"portrait_id": "neutral",
+		"text": "Heloooo!",
+	},
+	
+	
+	
+	"//this is bosses -> 4 digits":{},
+	
+	"1000":{
+		"type": "confirmation",
+		"speaker_id": "",
+		"portrait_id": "neutral",
+		"text": "[tornado]Do you want to enter the mysterious [color=red]fire[/color] cave?",
+	},
+	
+	"1001":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "[shake]???\nWhere did the magic element go?",
+		"next": "1002",
+	},
+	
+	"1002":{
+		"type": "dialogue",
+		"speaker_id": "Fire Boss",
+		"portrait_id": "neutral",
+		"text": "If u want the [wave][color=red]fire element[/color][/wave] you have to defeat me!",
+		"next": "1003",
+	},
+	
+	"1003":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "Challenge [rainbow]accepted[/rainbow]!",
+	},
+	
+	
+	"2000":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "[shake]Ohh noo... Not again...",
+		"next": "2001",
+	},
+	
+	"2001":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "Are you the [color=blue]Water Boss[/color]?",
+		"next": "2002",
+	},
+	
+	"2002":{
+		"type": "dialogue",
+		"speaker_id": "Water Boss",
+		"portrait_id": "neutral",
+		"text": "Yes, I am, and i'm afraid that you need to [shake][color=red]defeat me[/color][/shake] in order to get the [color=blue]water element[/color]!",
+		"next": "2003",
+	},
+	
+	"2003":{
+		"type": "dialogue",
+		"speaker_id": "Water Boss",
+		"portrait_id": "neutral",
+		"text": "I will!",
+	},
+	
+	"4000":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "[shake]...[/shake]",
+		"next": "4001",
+	},
+	
+	"4001":{
+		"type": "dialogue",
+		"speaker_id": "Joca, the Golem",
+		"portrait_id": "neutral",
+		"text": "Who are you? And what do you want?",
+		"next": "4002",
+	},
+	
+	"4002":{
+		"type": "dialogue",
+		"speaker_id": "Hero",
+		"portrait_id": "neutral",
+		"text": "I am here for the [color=brown]Earth Element[/color]!",
+		"next": "4003",
+	},
+	
+	"4003":{
+		"type": "dialogue",
+		"speaker_id": "Joca, the Golem",
+		"portrait_id": "neutral",
+		"text": "Come here and take it from me then!",
+	},
+	
+}

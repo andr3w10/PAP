@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://AI/AI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=3]
+[ext_resource path="res://Inventory/LootDrop/LootDrop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Overlap/NeighborDetector.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+
+[node name="Enemy" groups=["Enemies"] instance=ExtResource( 1 )]
+collision_layer = 160
+script = ExtResource( 2 )
+group = 1
+
+[node name="DebugNode" parent="." index="0"]
+visible = true
+enableDebug = false
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Pivot" parent="Body" index="0"]
+use_parent_material = false
+position = Vector2( 0, -10 )
+
+[node name="LootDrop" parent="Body" index="1" instance=ExtResource( 4 )]
+position = Vector2( 0, -10 )
+
+[node name="CollisionShape2D" parent="." index="3"]
+rotation = -1.5708
+
+[node name="DodgeCooldown" parent="Timers" index="2"]
+wait_time = 2.0
+
+[node name="Hitbox" parent="." index="5"]
+collision_mask = 2048
+
+[node name="NeighborDetector" parent="." index="7" instance=ExtResource( 5 )]
+
+[node name="LightSource" parent="." index="9"]
+radius = 60
+strength = 0.5
+
+[connection signal="drop_loot" from="." to="Body/LootDrop" method="_on_Enemy_drop_loot"]

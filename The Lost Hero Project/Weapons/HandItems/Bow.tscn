@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/HandItems/Bow.gd" type="Script" id=2]
+[ext_resource path="res://PixelArt/Weapons/bow.png" type="Texture" id=3]
+[ext_resource path="res://Animations/WeaponAnimator/bow.tres" type="Animation" id=4]
+[ext_resource path="res://Others/SFX/arrow.wav" type="AudioStream" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.72005
+height = 10.7575
+
+[node name="Bow" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+item_name = "Bow"
+
+[node name="Sprite" parent="Pivot" index="0"]
+position = Vector2( 2, 6.05326 )
+rotation = 0.0
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DamageArea" index="0"]
+position = Vector2( 2.41868, 0 )
+shape = SubResource( 1 )
+
+[node name="AttackAnimator" parent="." index="1"]
+anims/bow = ExtResource( 4 )
+
+[node name="AttackAudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 5 )

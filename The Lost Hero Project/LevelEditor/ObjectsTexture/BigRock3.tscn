@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Nature/BigRock3.tscn" type="PackedScene" id=1]
+[ext_resource path="res://LevelEditor/ObjectsTexture.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PixelArt/Prefabs/Rocks/BigRock3.png" type="Texture" id=3]
+
+[node name="BigRock3" instance=ExtResource( 2 )]
+texture = ExtResource( 3 )
+object_scene = ExtResource( 1 )
+object_type = 1

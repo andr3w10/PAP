@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LevelEditor/ObjectsTexture/TilesetsPNG/leaves1.png" type="Texture" id=1]
+[ext_resource path="res://LevelEditor/ObjectsTexture.tscn" type="PackedScene" id=2]
+
+[node name="Grass" instance=ExtResource( 2 )]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 1 )
+object_type = 3
+tile_id = 0

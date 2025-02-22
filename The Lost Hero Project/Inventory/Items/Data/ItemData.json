@@ -1,0 +1,119 @@
+{
+	"SpellBook":{
+		"ItemPath": "res://Weapons/HandItems/SpellBook/SpellBook.tscn",
+		"ItemType": "SpellBook",
+		"MaxSpells": 9,
+		"ItemDuration": 1.0,
+		"SpecialDuration": 1.0,
+		"ItemCooldown": 2.0,
+		"SpecialCooldown": 5.0,
+		"StackSize": 1,
+		"Description": ""
+	},
+	"Coin":{
+		"ItemPath": "",
+		"ItemType": "Resource",
+		"CoinsQuantity": 1,
+		"Description": "Used to make trades and buy thinks in the shops"
+	},
+	"Wood":{
+		"ItemPath": "",
+		"ItemType": "Resource",
+		"WoodQuantity": 1,
+		"Description": "Used to craft"
+	},
+	"Brick":{
+		"ItemPath": "",
+		"ItemType": "Resource",
+		"BrickQuantity": 1,
+		"Description": "Used to craft"
+	},
+	"BasicSword":{
+		"ItemPath": "res://Weapons/HandItems/BasicSword.tscn",
+		"ItemType": "Weapon",
+		"ItemDamage": 1,
+		"ItemDuration": 0.2,
+		"SpecialDuration": 0.2,
+		"ItemCooldown": 0.2,
+		"SpecialCooldown": 2.0,
+		"StackSize": 1,
+		"Description": "Kinda basic, but it should get the job done!"
+	},
+	"Axe":{
+		"ItemPath": "res://Weapons/HandItems/Axe.tscn",
+		"ItemType": "Tool",
+		"ItemDamage": 1,
+		"ItemDuration": 0.2,
+		"SpecialDuration": 0.2,
+		"ItemCooldown": 0.2,
+		"SpecialCooldown": 2.0,
+		"StackSize": 1,
+		"Description": "... Axe ..."
+	},
+	"Hoe":{
+		"ItemPath": "res://Weapons/HandItems/Hoe.tscn",
+		"ItemType": "Tool",
+		"ItemDamage": 1,
+		"ItemDuration": 0.2,
+		"SpecialDuration": 0.2,
+		"ItemCooldown": 0.2,
+		"SpecialCooldown": 2.0,
+		"StackSize": 1,
+		"Description": "... Hoe ..."
+	},
+	"MagicStick":{
+		"ItemPath": "res://Weapons/HandItems/MagicStick.tscn",
+		"ItemType": "Weapon",
+		"ItemDamage": 2,
+		"ItemDuration": 0.2,
+		"SpecialDuration": 0.2,
+		"ItemCooldown": 2.0,
+		"SpecialCooldown": 2.0,
+		"StackSize": 1,
+		"Description": "With this Magic Stick, you can look like Harry Potter! :-P"
+	},
+	"Bow":{
+		"ItemPath": "res://Weapons/HandItems/Bow.tscn",
+		"ItemType": "Weapon",
+		"ItemDamage": 2,
+		"ItemDuration": 0.0,
+		"SpecialDuration": 0.0,
+		"ItemCooldown": 0.8,
+		"SpecialCooldown": 2.0,
+		"StackSize": 1,
+		"Description": "You can take this to hit far away enemies!"
+	},
+	"Chicken":{
+		"ItemPath": "res://Consumables/HandItems/Chicken.tscn",
+		"ItemType": "Consumable",
+		"AddHealth": 2,
+		"StackSize": 4,
+		"Description": "Hummm... Delicious!"
+	},
+	"Bread":{
+		"ItemPath": "res://Consumables/HandItems/Bread.tscn",
+		"ItemType": "Consumable",
+		"AddHealth": 1,
+		"StackSize": 8,
+		"Description": "Take this, it still hot!"
+	},
+	"Berry":{
+		"ItemPath": "res://Consumables/HandItems/Berry.tscn",
+		"ItemType": "Consumable",
+		"AddHealth": 1,
+		"StackSize": 5,
+		"Description": "This berries look juicy!"
+	},
+	"Wheat":{
+		"ItemPath": "res://Farm/HandItems/Wheat.tscn",
+		"ItemType": "FarmResource",
+		"StackSize": 15,
+		"Description": "Used to craft"
+	},
+	"BerrySeeds":{
+		"ItemPath": "res://Farm/HandItems/BerrySeeds.tscn",
+		"ItemType": "FarmResource",
+		"StackSize": 8,
+		"Description": "Used to plant"
+	},
+}

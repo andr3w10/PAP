@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/HandItems/SpellBook/SpellBook.gd" type="Script" id=1]
+[ext_resource path="res://PixelArt/Weapons/SpellBook/spell_book.png" type="Texture" id=2]
+[ext_resource path="res://PixelArt/MouseCursors/area_mouse_cursor.png" type="Texture" id=3]
+
+[node name="SpellBook" type="Node2D"]
+script = ExtResource( 1 )
+item_name = "SpellBook"
+
+[node name="CustomCursors" type="Node2D" parent="."]
+
+[node name="splash" type="Sprite" parent="CustomCursors"]
+visible = false
+position = Vector2( 0, -4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2( 8, 0 )
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
+position = Vector2( 8, 0 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="AttackAnimator" type="AnimationPlayer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BasicCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="ChangeCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="temp_load" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="temp_load" to="." method="_on_temp_load_timeout"]

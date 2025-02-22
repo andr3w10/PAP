@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Farm/FarmResource.gd" type="Script" id=1]
+
+[node name="FarmResource" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2( 6, 0 )
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
+position = Vector2( 2, 0 )

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/OpenBracketRetroWhite.png-954d4fdf9bbcc38b7d7ab248fbd47046.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Downloads/GFX/Kadith's free icons/PNGs/RetroKeyboardWhite/Individuals/OpenBracketRetroWhite.png"
+dest_files=[ "res://.import/OpenBracketRetroWhite.png-954d4fdf9bbcc38b7d7ab248fbd47046.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

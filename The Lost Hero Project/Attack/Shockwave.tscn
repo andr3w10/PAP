@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Attack/Shockwave.gd" type="Script" id=1]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PixelArt/Attack/shockwave.png" type="Texture" id=3]
+[ext_resource path="res://Animations/Attack/shockwave_1.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Attack/shockwave_3.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Attack/shockwave_2.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Attack/shockwave_0.tres" type="Animation" id=7]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/CollisionPolygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="Shockwave" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="DamageArea" parent="." instance=ExtResource( 2 )]
+collision_layer = 2147483648
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageArea"]
+scale = Vector2( 1e-05, 1e-05 )
+polygon = PoolVector2Array( 15.3614, -82.2802, 16.0076, -98.2344, 46.0522, -95.2852, 78.0227, -88.1194, 93.063, -83.316, 109.836, -76.3864, 128.498, -66.3857, 142.515, -56.2276, 158.658, -40.3998, 165.902, -28.6668, 169.052, -22.2884, 172.674, -9.53171, 173.698, -0.00356102, 173.068, 7.24098, 169.84, 20.4702, 166.375, 28.5022, 157.791, 41.3376, 131.632, 65.5345, 100.062, 81.2167, 58.2508, 93.0025, 20.6487, 97.4923, -16.2209, 98.2269, -17.655, 97.9132, -18.0759, 81.2168, 20.368, 81.357, 45.4829, 77.8494, 71.5799, 71.3953, 91.5034, 63.2575, 111.146, 52.4539, 127.843, 38.0024, 140.049, 22.288, 144.96, 2.78546, 141.553, -18.2001, 124.885, -42.4077, 101.472, -58.6784, 74.0891, -70.9807, 49.4846, -77.3302, 20.8676, -81.1122, -12.7863, -80.886, -54.1049, -77.1779, -82.8705, -67.7035, -111.093, -52.8188, -128.573, -37.3264, -138.348, -24.1875, -143.709, -9.99754, -144.129, 7.76621, -138.032, 25.1095, -126.05, 40.2455, -119.218, 46.4471, -105.658, 56.1173, -88.6303, 64.7364, -58.7788, 75.2475, -18.1388, 81.2276, -17.6686, 97.9484, -48.8984, 94.4828, -73.179, 89.4374, -100.02, 80.8676, -118.131, 72.2844, -132.148, 64.0161, -146.165, 53.1493, -156.874, 42.2825, -164.04, 32.2031, -171.363, 17.0841, -173.017, 6.68974, -173.285, -7.18442, -170.409, -19.2509, -166.62, -27.529, -161.362, -36.5414, -152.228, -47.0932, -143.015, -55.9127, -129.864, -65.2833, -121.123, -70.4805, -103.8, -79.2212, -82.9321, -86.7808, -62.2221, -91.978, -45.8432, -95.364, -16.865, -98.3563, 15.7103, -98.3831 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/shockwave_0 = ExtResource( 7 )
+anims/shockwave_1 = ExtResource( 4 )
+anims/shockwave_2 = ExtResource( 6 )
+anims/shockwave_3 = ExtResource( 5 )

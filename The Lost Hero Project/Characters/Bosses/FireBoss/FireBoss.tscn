@@ -1,0 +1,115 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Characters/Bosses/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Bosses/FireBoss/FireBossFSM.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Bosses/FireBoss/FireBoss.gd" type="Script" id=3]
+[ext_resource path="res://PixelArt/Bosses/fire_boss.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Bosses/Fire/idle_right.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Bosses/Fire/idle_left.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Bosses/Fire/prepare_right.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Bosses/Fire/idle_prep_right.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Bosses/Fire/attack_right.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Bosses/Fire/recharge_right.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Bosses/Fire/prepare_left.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Bosses/Fire/idle_prep_left.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Bosses/Fire/attack_left.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Bosses/Fire/recharge_left.tres" type="Animation" id=14]
+[ext_resource path="res://Lighting/LightSource.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PixelArt/Attack/Attack.png" type="Texture" id=16]
+[ext_resource path="res://Animations/Bosses/Fire/die.tres" type="Animation" id=17]
+[ext_resource path="res://Animations/Bosses/Fire/prepare_2.tres" type="Animation" id=18]
+[ext_resource path="res://Animations/Bosses/Fire/attack_2.tres" type="Animation" id=19]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=20]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.54346
+height = 24.3976
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 35.7785
+height = 33.9919
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 23.165
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 34.7893
+
+[node name="FireBoss" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+max_health = 40
+player_start_fight_position = Vector2( 157, 50 )
+boss_name = "Fire Boss"
+dialogue_id = "1001"
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="die_sprite" type="Sprite" parent="Body" index="0"]
+position = Vector2( 4, -76 )
+texture = ExtResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="1"]
+position = Vector2( 0, -90 )
+texture = ExtResource( 4 )
+hframes = 22
+vframes = 12
+
+[node name="LootDrop" parent="Body" index="3"]
+position = Vector2( 0, -37 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 2.5, 0 )
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="AttackPreparation" parent="Timers" index="1"]
+wait_time = 1.2
+
+[node name="RechargeTimer" parent="Timers" index="2"]
+wait_time = 1.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -69 )
+shape = SubResource( 2 )
+
+[node name="NeighborDetector" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+shape = SubResource( 3 )
+
+[node name="LightSource" parent="." index="6" instance=ExtResource( 15 )]
+position = Vector2( 0, -69.5 )
+radius = 200
+strength = 0.8
+
+[node name="DamageArea" parent="." index="7" instance=ExtResource( 20 )]
+collision_layer = 2147484672
+attacker = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
+position = Vector2( -32, -42 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="AnimationPlayer" parent="." index="9"]
+autoplay = "idle_right"
+anims/attack_2 = ExtResource( 19 )
+anims/attack_left = ExtResource( 13 )
+anims/attack_right = ExtResource( 9 )
+anims/die = ExtResource( 17 )
+anims/idle_left = ExtResource( 6 )
+anims/idle_prep_left = ExtResource( 12 )
+anims/idle_prep_right = ExtResource( 8 )
+anims/idle_right = ExtResource( 5 )
+anims/prepare_2 = ExtResource( 18 )
+anims/prepare_left = ExtResource( 11 )
+anims/prepare_right = ExtResource( 7 )
+anims/recharge_left = ExtResource( 14 )
+anims/recharge_right = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="." index="11"]
+margin_right = 40.0
+margin_bottom = 14.0

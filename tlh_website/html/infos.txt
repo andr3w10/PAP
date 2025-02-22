@@ -1,0 +1,1 @@
+"ajax.php" and "search.js" need to be in the same folder that "store.php" to the live serach work

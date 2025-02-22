@@ -1,0 +1,118 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Characters/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Animations/Goblin/dieLeft.tres" type="Animation" id=2]
+[ext_resource path="res://PixelArt/Characters/Enemies/Skeleton/skeleton.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Enemies/Skeleton/SkeletonFSM.gd" type="Script" id=4]
+[ext_resource path="res://Characters/Enemies/Skeleton/Skeleton.gd" type="Script" id=5]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=6]
+[ext_resource path="res://Animations/Goblin/idleLeft.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Goblin/idleRight.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Goblin/runRight.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Goblin/runLeft.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Goblin/dieRight.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Goblin/attackLeft.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Goblin/attackRight.tres" type="Animation" id=13]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=14]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 2.44496
+height = 12.0321
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 9.124
+height = 10.8986
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 9.87157
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageArea/CollisionPolygon2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="Skeleton" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+move_speed = 5.0
+wander_speed = 3.0
+max_health = 4
+attack_range = 36.0
+debugNodePath = NodePath("")
+
+[node name="StateMachine" parent="." index="1"]
+script = ExtResource( 4 )
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="0"]
+use_parent_material = true
+position = Vector2( 0, -9.1667 )
+scale = Vector2( 1.4, 1.5 )
+texture = ExtResource( 3 )
+hframes = 6
+vframes = 8
+frame = 6
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 1, -2.5 )
+shape = SubResource( 2 )
+
+[node name="AttackCooldown" parent="Timers" index="0"]
+wait_time = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -14.7435 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 4 )
+
+[node name="DamageArea" parent="." index="8" instance=ExtResource( 14 )]
+collision_layer = 2147484672
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageArea" index="0"]
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -19.4269, 7.41853, -32.4755, -0.0177841, -39.9118, -11.2424, -40.0521, -26.8166, -34.8607, -36.9187, -22.3733, -46.4597, -10.4472, -48.5643, 1.61929, -45.6178, -11.9906, -43.9341, -21.3912, -37.1993, -27.5647, -25.5538, -29.1081, -20.3624, -28.6872, -8.15564, -25.4601, -1.56117 )
+disabled = true
+
+[node name="AnimationPlayer" parent="." index="9"]
+autoplay = "idleLeft"
+anims/RESET = SubResource( 5 )
+anims/attackLeft = ExtResource( 12 )
+anims/attackRight = ExtResource( 13 )
+anims/dieLeft = ExtResource( 2 )
+anims/dieRight = ExtResource( 11 )
+anims/idleLeft = ExtResource( 7 )
+anims/idleRight = ExtResource( 8 )
+anims/runLeft = ExtResource( 10 )
+anims/runRight = ExtResource( 9 )
+
+[node name="LightSource" parent="." index="10"]
+position = Vector2( 0, -16 )
+
+[node name="Label" type="Label" parent="." index="12"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="immunity_ended" from="Hitbox" to="." method="_on_Hitbox_immunity_ended"]

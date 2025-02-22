@@ -1,0 +1,1000 @@
+[gd_scene load_steps=88 format=2]
+
+[ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://Title/Buttons/START/down.png" type="Texture" id=2]
+[ext_resource path="res://Title/Buttons/START/up.png" type="Texture" id=3]
+[ext_resource path="res://PixelArt/Title/background_R.png" type="Texture" id=4]
+[ext_resource path="res://Title/Buttons/new story/account_type.png" type="Texture" id=5]
+[ext_resource path="res://Animations/TitleScreen/show_account_type.tres" type="Animation" id=6]
+[ext_resource path="res://Title/Buttons/EXIT/down.png" type="Texture" id=7]
+[ext_resource path="res://Title/Buttons/SETTINGS/up.png" type="Texture" id=8]
+[ext_resource path="res://Title/Buttons/SETTINGS/down.png" type="Texture" id=9]
+[ext_resource path="res://Animations/TitleScreen/hide_account_type.tres" type="Animation" id=10]
+[ext_resource path="res://Title/Buttons/CREDITS/down.png" type="Texture" id=11]
+[ext_resource path="res://Title/Buttons/EXIT/up.png" type="Texture" id=12]
+[ext_resource path="res://Title/Buttons/CREDITS/up.png" type="Texture" id=13]
+[ext_resource path="res://Title/Buttons/new story/login_page.png" type="Texture" id=14]
+[ext_resource path="res://Title/Buttons/TitleButtons.gd" type="Script" id=15]
+[ext_resource path="res://Title/Menus/start.png" type="Texture" id=16]
+[ext_resource path="res://UI/Menus/Settings.gd" type="Script" id=17]
+[ext_resource path="res://Title/Buttons/new story/down.png" type="Texture" id=18]
+[ext_resource path="res://Title/Buttons/new story/up.png" type="Texture" id=19]
+[ext_resource path="res://Title/Buttons/new story/hover.png" type="Texture" id=20]
+[ext_resource path="res://Title/Menus/START.gd" type="Script" id=21]
+[ext_resource path="res://Others/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://Title/Buttons/new story/player_name_lbl.png" type="Texture" id=23]
+[ext_resource path="res://PixelArt/UI/Btns/fullscreen_window.png" type="Texture" id=24]
+[ext_resource path="res://Animations/TitleScreen/show_name_insert.tres" type="Animation" id=25]
+[ext_resource path="res://Title/Buttons/START/select/empty.png" type="Texture" id=26]
+[ext_resource path="res://Title/Buttons/START/select/1.png" type="Texture" id=27]
+[ext_resource path="res://Title/Buttons/START/select/3.png" type="Texture" id=28]
+[ext_resource path="res://Title/Buttons/START/select/2.png" type="Texture" id=29]
+[ext_resource path="res://Title/Buttons/START/options/ok_disabled.png" type="Texture" id=30]
+[ext_resource path="res://Title/Buttons/START/options/ok_down.png" type="Texture" id=31]
+[ext_resource path="res://Title/Buttons/START/options/delete_up.png" type="Texture" id=32]
+[ext_resource path="res://Title/Buttons/START/options/delete_disabled.png" type="Texture" id=33]
+[ext_resource path="res://Title/Buttons/START/options/delete_down.png" type="Texture" id=34]
+[ext_resource path="res://Title/Buttons/START/options/ok_up.png" type="Texture" id=35]
+[ext_resource path="res://Title/Buttons/ProfileBtns.gd" type="Script" id=36]
+[ext_resource path="res://PixelArt/Title/background_L.png" type="Texture" id=37]
+[ext_resource path="res://PixelArt/Title/background_MID.png" type="Texture" id=38]
+[ext_resource path="res://PixelArt/Title/background_UP.png" type="Texture" id=39]
+[ext_resource path="res://PixelArt/Title/islands.png" type="Texture" id=40]
+[ext_resource path="res://PixelArt/Title/name.png" type="Texture" id=41]
+[ext_resource path="res://PixelArt/Title/andr3w.png" type="Texture" id=42]
+[ext_resource path="res://Animations/TitleScreen/left_mid.tres" type="Animation" id=43]
+[ext_resource path="res://Animations/TitleScreen/loop.tres" type="Animation" id=44]
+[ext_resource path="res://Animations/TitleScreen/mid_right.tres" type="Animation" id=45]
+[ext_resource path="res://Animations/TitleScreen/right_mid.tres" type="Animation" id=46]
+[ext_resource path="res://Animations/TitleScreen/mid_left.tres" type="Animation" id=47]
+[ext_resource path="res://Animations/TitleScreen/top_mid.tres" type="Animation" id=48]
+[ext_resource path="res://Title/intro/face.png" type="Texture" id=49]
+[ext_resource path="res://Title/intro/background.png" type="Texture" id=50]
+[ext_resource path="res://Title/intro/mouth.png" type="Texture" id=51]
+[ext_resource path="res://Title/intro/text.png" type="Texture" id=52]
+[ext_resource path="res://PixelArt/UI/Btns/fullscreen_full.png" type="Texture" id=53]
+[ext_resource path="res://Others/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=54]
+[ext_resource path="res://Title/Buttons/new story/login_btn.png" type="Texture" id=55]
+[ext_resource path="res://Animations/TitleScreen/hide_login.tres" type="Animation" id=56]
+[ext_resource path="res://Animations/TitleScreen/show_login.tres" type="Animation" id=57]
+[ext_resource path="res://Title/Buttons/new story/close.png" type="Texture" id=58]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 116, 60 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 12
+font_data = ExtResource( 22 )
+
+[sub_resource type="ButtonGroup" id=15]
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 33 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 30 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 1230, 165 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 1230, 165 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 1230, 165 )
+
+[sub_resource type="DynamicFont" id=27]
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 10
+font_data = ExtResource( 54 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 6
+font_data = ExtResource( 22 )
+
+[node name="TitleScreen" type="Control"]
+anchor_left = 0.014
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.952
+script = ExtResource( 1 )
+
+[node name="Texture" type="Control" parent="."]
+anchor_left = -1.014
+anchor_top = 0.025
+anchor_right = 2.028
+anchor_bottom = 2.025
+margin_left = 575.952
+margin_top = -8.0
+margin_right = -583.9
+margin_bottom = -328.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Control" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background_UP" type="TextureRect" parent="Texture/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 39 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background_MID" type="TextureRect" parent="Texture/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 38 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background_L" type="TextureRect" parent="Texture/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 37 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background_R" type="TextureRect" parent="Texture/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Islands" type="TextureRect" parent="Texture/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 40 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 328.0
+texture = ExtResource( 42 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tile" type="Control" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="Texture/Tile"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_top = 272.0
+margin_right = 576.0
+margin_bottom = 600.0
+texture = ExtResource( 41 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Intro" type="Control" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="Texture/Intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 50 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="Control" parent="Texture/Intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 16.0
+margin_right = -44.0043
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mouth" type="TextureRect" parent="Texture/Intro/logo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 32.0
+margin_right = -56.0
+margin_bottom = -32.0002
+texture = ExtResource( 51 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="face" type="TextureRect" parent="Texture/Intro/logo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 32.0
+margin_right = -56.0
+margin_bottom = -32.0
+texture = ExtResource( 49 )
+expand = true
+
+[node name="text" type="TextureRect" parent="Texture/Intro"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 136.0
+margin_right = -16.0
+margin_bottom = 72.0
+texture = ExtResource( 52 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Control" parent="Texture"]
+anchor_top = 1.025
+anchor_right = 1.0
+anchor_bottom = 2.016
+margin_left = 5.0
+margin_top = 3.05176e-05
+margin_right = 5.0
+margin_bottom = 2.88007
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="START" type="Button" parent="Texture/Buttons"]
+visible = false
+anchor_left = 0.028
+anchor_top = 0.819
+anchor_right = 0.218
+anchor_bottom = 0.984
+margin_left = 0.0959978
+margin_top = -0.0800476
+margin_right = 0.175987
+margin_bottom = -0.380035
+focus_mode = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SETTINGS" type="Button" parent="Texture/Buttons"]
+visible = false
+anchor_left = 0.268
+anchor_top = 0.819
+anchor_right = 0.458
+anchor_bottom = 0.983
+margin_left = -0.22403
+margin_top = -0.0800476
+margin_right = -0.144043
+margin_bottom = -0.0600281
+focus_mode = 0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+enabled_focus_mode = 0
+
+[node name="CREDITS" type="Button" parent="Texture/Buttons"]
+visible = false
+anchor_left = 0.507
+anchor_top = 0.819
+anchor_right = 0.697
+anchor_bottom = 0.984
+margin_left = 0.0239258
+margin_top = -0.0800476
+margin_right = 0.103912
+margin_bottom = -0.380035
+focus_mode = 0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXIT" type="Button" parent="Texture/Buttons"]
+visible = false
+anchor_left = 0.746
+anchor_top = 0.819
+anchor_right = 0.937
+anchor_bottom = 0.983
+margin_left = 0.271942
+margin_top = -0.0800476
+margin_right = -0.216003
+margin_bottom = -0.0600281
+focus_mode = 0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+enabled_focus_mode = 0
+
+[node name="LevelEditor" type="Button" parent="Texture/Buttons"]
+anchor_left = 0.775
+anchor_top = 0.041
+anchor_right = 0.986
+anchor_bottom = 0.141
+margin_left = -0.200012
+margin_top = -0.120001
+margin_right = -0.0480347
+margin_bottom = -0.120003
+custom_fonts/font = SubResource( 13 )
+text = "Level Editor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menus" type="Control" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="START" type="Control" parent="Texture/Menus"]
+anchor_left = -1.014
+anchor_top = 1.025
+anchor_bottom = 2.025
+margin_left = 7.95203
+margin_top = 0.04599
+margin_bottom = 0.0450439
+script = ExtResource( 21 )
+
+[node name="Display" type="Control" parent="Texture/Menus/START"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Texture/Menus/START/Display"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.0460205
+margin_bottom = -0.0460205
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Control" parent="Texture/Menus/START/Display"]
+margin_left = 96.0
+margin_top = 78.954
+margin_right = 460.0
+margin_bottom = 127.954
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Texture/Menus/START/Display/1"]
+margin_left = 33.0
+margin_top = 7.0
+margin_right = 173.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99999999999999999"
+valign = 1
+
+[node name="Gold" type="Label" parent="Texture/Menus/START/Display/1"]
+margin_left = 30.0
+margin_top = 32.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 14 )
+text = "9999"
+valign = 1
+
+[node name="Time" type="Label" parent="Texture/Menus/START/Display/1"]
+margin_left = 192.0
+margin_top = 7.0
+margin_right = 304.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99y 99d 99:99"
+valign = 1
+
+[node name="Location" type="Label" parent="Texture/Menus/START/Display/1"]
+margin_left = 202.0
+margin_top = 31.0
+margin_right = 298.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 14 )
+text = "9999999999999"
+valign = 1
+
+[node name="account_type" type="TextureRect" parent="Texture/Menus/START/Display/1"]
+margin_left = 350.0
+margin_top = -7.0
+margin_right = 372.0
+margin_bottom = 15.0
+expand = true
+
+[node name="2" type="Control" parent="Texture/Menus/START/Display"]
+margin_left = 96.0
+margin_top = 149.954
+margin_right = 460.0
+margin_bottom = 198.954
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Texture/Menus/START/Display/2"]
+margin_left = 33.0
+margin_top = 7.0
+margin_right = 173.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99999999999999999"
+valign = 1
+
+[node name="Gold" type="Label" parent="Texture/Menus/START/Display/2"]
+margin_left = 30.0
+margin_top = 32.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 14 )
+text = "9999"
+valign = 1
+
+[node name="Time" type="Label" parent="Texture/Menus/START/Display/2"]
+margin_left = 192.0
+margin_top = 7.0
+margin_right = 304.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99y 99d 99:99"
+valign = 1
+
+[node name="Location" type="Label" parent="Texture/Menus/START/Display/2"]
+margin_left = 202.0
+margin_top = 31.0
+margin_right = 298.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 14 )
+text = "9999999999999"
+valign = 1
+
+[node name="account_type" type="TextureRect" parent="Texture/Menus/START/Display/2"]
+margin_left = 350.0
+margin_top = -6.99998
+margin_right = 372.0
+margin_bottom = 15.0
+expand = true
+
+[node name="3" type="Control" parent="Texture/Menus/START/Display"]
+margin_left = 96.0
+margin_top = 220.954
+margin_right = 460.0
+margin_bottom = 269.954
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Texture/Menus/START/Display/3"]
+margin_left = 33.0
+margin_top = 7.0
+margin_right = 173.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99999999999999999"
+valign = 1
+
+[node name="Gold" type="Label" parent="Texture/Menus/START/Display/3"]
+margin_left = 30.0
+margin_top = 32.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 14 )
+text = "9999"
+valign = 1
+
+[node name="Time" type="Label" parent="Texture/Menus/START/Display/3"]
+margin_left = 192.0
+margin_top = 7.0
+margin_right = 304.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 14 )
+text = "99y 99d 99:99"
+valign = 1
+
+[node name="Location" type="Label" parent="Texture/Menus/START/Display/3"]
+margin_left = 202.0
+margin_top = 31.0
+margin_right = 298.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 14 )
+text = "9999999999999"
+valign = 1
+
+[node name="account_type" type="TextureRect" parent="Texture/Menus/START/Display/3"]
+margin_left = 350.0
+margin_top = -7.0
+margin_right = 372.0
+margin_bottom = 15.0
+expand = true
+
+[node name="ProfileBtns" type="Control" parent="Texture/Menus/START"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 36 )
+
+[node name="1" type="CheckBox" parent="Texture/Menus/START/ProfileBtns"]
+margin_left = 411.0
+margin_top = 89.0
+margin_right = 443.0
+margin_bottom = 121.0
+focus_mode = 0
+custom_icons/radio_checked = ExtResource( 27 )
+custom_icons/checked = ExtResource( 27 )
+custom_icons/radio_unchecked = ExtResource( 26 )
+custom_icons/unchecked = ExtResource( 26 )
+enabled_focus_mode = 0
+group = SubResource( 15 )
+
+[node name="2" type="CheckBox" parent="Texture/Menus/START/ProfileBtns"]
+margin_left = 411.0
+margin_top = 160.0
+margin_right = 443.0
+margin_bottom = 192.0
+focus_mode = 0
+custom_icons/radio_checked = ExtResource( 29 )
+custom_icons/checked = ExtResource( 29 )
+custom_icons/radio_unchecked = ExtResource( 26 )
+custom_icons/unchecked = ExtResource( 26 )
+enabled_focus_mode = 0
+group = SubResource( 15 )
+
+[node name="3" type="CheckBox" parent="Texture/Menus/START/ProfileBtns"]
+margin_left = 411.0
+margin_top = 231.0
+margin_right = 443.0
+margin_bottom = 263.0
+focus_mode = 0
+custom_icons/radio_checked = ExtResource( 28 )
+custom_icons/checked = ExtResource( 28 )
+custom_icons/radio_unchecked = ExtResource( 26 )
+custom_icons/unchecked = ExtResource( 26 )
+enabled_focus_mode = 0
+group = SubResource( 15 )
+
+[node name="Delete" type="Button" parent="Texture/Menus/START/ProfileBtns"]
+margin_left = 366.87
+margin_top = 34.7573
+margin_right = 396.87
+margin_bottom = 64.7573
+focus_mode = 0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
+disabled = true
+enabled_focus_mode = 0
+
+[node name="Ok" type="Button" parent="Texture/Menus/START/ProfileBtns"]
+margin_left = 411.87
+margin_top = 34.7573
+margin_right = 441.87
+margin_bottom = 64.7573
+focus_mode = 0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+disabled = true
+enabled_focus_mode = 0
+
+[node name="new_story_btn1" type="Button" parent="Texture/Menus/START"]
+anchor_left = 0.169
+anchor_top = 0.25
+anchor_right = 0.81
+anchor_bottom = 0.403
+margin_left = 0.00798798
+margin_top = 5.34058e-05
+margin_right = -0.0801086
+margin_bottom = 0.0400391
+focus_mode = 0
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_story_btn2" type="Button" parent="Texture/Menus/START"]
+anchor_left = 0.169
+anchor_top = 0.472
+anchor_right = 0.81
+anchor_bottom = 0.625
+margin_left = 0.00798798
+margin_top = -0.0399628
+margin_right = -0.0801086
+margin_bottom = 7.62939e-05
+focus_mode = 0
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_story_btn3" type="Button" parent="Texture/Menus/START"]
+anchor_left = 0.169
+anchor_top = 0.694
+anchor_right = 0.81
+anchor_bottom = 0.85
+margin_left = 0.00798798
+margin_top = -0.0799255
+margin_right = -0.0801086
+margin_bottom = 6.10352e-05
+focus_mode = 0
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameInsert" type="Control" parent="Texture/Menus/START"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 320.0
+margin_bottom = 320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Texture/Menus/START/NameInsert"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 127.954
+margin_right = -88.0
+margin_bottom = -112.045
+texture = ExtResource( 23 )
+expand = true
+
+[node name="LineEdit" type="LineEdit" parent="Texture/Menus/START/NameInsert"]
+margin_left = 224.0
+margin_top = 159.954
+margin_right = 416.0
+margin_bottom = 184.954
+custom_fonts/font = SubResource( 27 )
+max_length = 20
+
+[node name="AccountType" type="Control" parent="Texture/Menus/START"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 320.0
+margin_bottom = 320.0
+
+[node name="TextureRect" type="TextureRect" parent="Texture/Menus/START/AccountType"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 127.954
+margin_right = -88.0001
+margin_bottom = -112.045
+texture = ExtResource( 5 )
+expand = true
+
+[node name="online" type="TextureButton" parent="Texture/Menus/START/AccountType"]
+anchor_left = 0.363
+anchor_top = 0.534
+anchor_right = 0.5
+anchor_bottom = 0.609
+margin_left = -0.184784
+margin_top = 0.120499
+margin_right = -0.00106812
+margin_bottom = 0.120575
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="offline" type="TextureButton" parent="Texture/Menus/START/AccountType"]
+anchor_left = 0.56
+anchor_top = 0.534
+anchor_right = 0.697
+anchor_bottom = 0.609
+margin_left = -0.0812073
+margin_top = 0.120499
+margin_right = 0.102509
+margin_bottom = 0.120575
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="LoginPage" type="Control" parent="Texture/Menus/START"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 320.0
+margin_bottom = 320.0
+
+[node name="bk" type="TextureRect" parent="Texture/Menus/START/LoginPage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="username" type="LineEdit" parent="Texture/Menus/START/LoginPage"]
+margin_left = 200.0
+margin_top = 108.0
+margin_right = 376.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 0.929412, 0.741176, 0.470588, 1 )
+custom_fonts/font = SubResource( 28 )
+
+[node name="password" type="LineEdit" parent="Texture/Menus/START/LoginPage"]
+margin_left = 200.0
+margin_top = 188.0
+margin_right = 376.0
+margin_bottom = 212.0
+custom_colors/font_color = Color( 0.929412, 0.741176, 0.470588, 1 )
+custom_fonts/font = SubResource( 28 )
+secret = true
+secret_character = "x"
+
+[node name="LoginBtn" type="TextureButton" parent="Texture/Menus/START/LoginPage"]
+anchor_left = 0.423
+anchor_top = 0.734
+anchor_right = 0.59
+anchor_bottom = 0.841
+margin_left = -0.265839
+margin_top = 0.120682
+margin_right = -0.122589
+margin_bottom = -0.119202
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 55 )
+expand = true
+stretch_mode = 3
+
+[node name="errors" type="Label" parent="Texture/Menus/START/LoginPage"]
+visible = false
+margin_left = 224.0
+margin_top = 220.0
+margin_right = 351.0
+margin_bottom = 237.0
+custom_colors/font_color = Color( 0.815686, 0.419608, 0.419608, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "invalid username or password or the account is already in use"
+autowrap = true
+
+[node name="register" type="TextureButton" parent="Texture/Menus/START/LoginPage"]
+anchor_left = 0.614
+anchor_top = 0.863
+anchor_right = 0.665
+anchor_bottom = 0.903
+margin_left = 0.245331
+margin_top = -0.15918
+margin_right = 0.2771
+margin_bottom = 0.0408325
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="close" type="TextureButton" parent="Texture/Menus/START/LoginPage"]
+margin_left = 348.449
+margin_top = 32.0551
+margin_right = 372.449
+margin_bottom = 56.0551
+texture_normal = ExtResource( 58 )
+expand = true
+stretch_mode = 3
+
+[node name="SETTINGS" type="Control" parent="Texture/Menus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+fullscreen_btn = NodePath("../../../Fullscreen")
+
+[node name="CREDITS" type="Control" parent="Texture/Menus"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 336.0
+margin_bottom = 336.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loop" type="AnimationPlayer" parent="Texture"]
+autoplay = "loop"
+anims/loop = ExtResource( 44 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "top_mid"
+anims/hide_account_type = ExtResource( 10 )
+anims/hide_login = ExtResource( 56 )
+anims/left_mid = ExtResource( 43 )
+anims/mid_left = ExtResource( 47 )
+anims/mid_right = ExtResource( 45 )
+anims/right_mid = ExtResource( 46 )
+anims/show_account_type = ExtResource( 6 )
+anims/show_login = ExtResource( 57 )
+anims/show_name_insert = ExtResource( 25 )
+anims/top_mid = ExtResource( 48 )
+
+[node name="Fade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="CheckBox" parent="."]
+margin_left = 543.0
+margin_top = 1.0
+margin_right = 567.0
+margin_bottom = 25.0
+focus_mode = 0
+custom_icons/checked = ExtResource( 24 )
+custom_icons/unchecked = ExtResource( 53 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Texture/Buttons/START" to="Texture/Buttons" method="_on_START_button_up"]
+[connection signal="mouse_entered" from="Texture/Buttons/START" to="Texture/Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Texture/Buttons/START" to="Texture/Buttons" method="_on_pressed"]
+[connection signal="button_up" from="Texture/Buttons/SETTINGS" to="Texture/Buttons" method="_on_SETTINGS_button_up"]
+[connection signal="mouse_entered" from="Texture/Buttons/SETTINGS" to="Texture/Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Texture/Buttons/SETTINGS" to="Texture/Buttons" method="_on_pressed"]
+[connection signal="button_up" from="Texture/Buttons/CREDITS" to="Texture/Buttons" method="_on_CREDITS_button_up"]
+[connection signal="mouse_entered" from="Texture/Buttons/CREDITS" to="Texture/Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Texture/Buttons/CREDITS" to="Texture/Buttons" method="_on_pressed"]
+[connection signal="button_up" from="Texture/Buttons/EXIT" to="Texture/Buttons" method="_on_EXIT_button_up"]
+[connection signal="mouse_entered" from="Texture/Buttons/EXIT" to="Texture/Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Texture/Buttons/EXIT" to="Texture/Buttons" method="_on_pressed"]
+[connection signal="button_up" from="Texture/Buttons/LevelEditor" to="Texture/Buttons" method="_on_LevelEditor_button_up"]
+[connection signal="mouse_entered" from="Texture/Buttons/LevelEditor" to="Texture/Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Texture/Buttons/LevelEditor" to="Texture/Buttons" method="_on_pressed"]
+[connection signal="button_up" from="Texture/Menus/START/ProfileBtns/1" to="Texture/Menus/START/ProfileBtns" method="_on_1_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/ProfileBtns/2" to="Texture/Menus/START/ProfileBtns" method="_on_2_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/ProfileBtns/3" to="Texture/Menus/START/ProfileBtns" method="_on_3_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/ProfileBtns/Delete" to="Texture/Menus/START/ProfileBtns" method="_on_Delete_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/ProfileBtns/Ok" to="Texture/Menus/START/ProfileBtns" method="_on_Ok_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/new_story_btn1" to="Texture/Menus/START" method="_on_new_story_btn1_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/new_story_btn2" to="Texture/Menus/START" method="_on_new_story_btn2_button_up"]
+[connection signal="button_up" from="Texture/Menus/START/new_story_btn3" to="Texture/Menus/START" method="_on_new_story_btn3_button_up"]
+[connection signal="pressed" from="Texture/Menus/START/AccountType/online" to="Texture/Menus/START" method="_on_online_pressed"]
+[connection signal="pressed" from="Texture/Menus/START/AccountType/offline" to="Texture/Menus/START" method="_on_offline_pressed"]
+[connection signal="pressed" from="Texture/Menus/START/LoginPage/LoginBtn" to="Texture/Menus/START" method="_on_LoginBtn_pressed"]
+[connection signal="pressed" from="Texture/Menus/START/LoginPage/register" to="Texture/Menus/START" method="_on_register_pressed"]
+[connection signal="pressed" from="Texture/Menus/START/LoginPage/close" to="Texture/Menus/START" method="_on_close_pressed"]
+[connection signal="toggled" from="Fullscreen" to="Texture/Menus/SETTINGS" method="_on_Fullscreen_toggled"]

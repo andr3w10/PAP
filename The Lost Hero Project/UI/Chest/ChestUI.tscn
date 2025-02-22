@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/Chest/ChestUI.gd" type="Script" id=1]
+[ext_resource path="res://Inventory/InventorySlotsContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Chest/ChestInventoryUI.gd" type="Script" id=3]
+[ext_resource path="res://UI/Chest/PlayerInventoryUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PixelArt/UI/Chests/player_inventory_page.png" type="Texture" id=5]
+[ext_resource path="res://PixelArt/UI/Chests/chest_page.png" type="Texture" id=6]
+[ext_resource path="res://Others/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 7
+extra_spacing_char = 2
+font_data = ExtResource( 7 )
+
+[node name="ChestUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChestInventoryUI" type="Control" parent="."]
+anchor_left = 0.546
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.127991
+margin_right = 2.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ChestInventoryUI"]
+position = Vector2( 110, 155 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 6 )
+
+[node name="Inventory" parent="ChestInventoryUI" instance=ExtResource( 2 )]
+anchor_right = 0.96
+anchor_bottom = 1.0
+margin_left = 37.0
+margin_right = -66.1999
+margin_bottom = -64.0
+
+[node name="IdLabel" type="Label" parent="ChestInventoryUI"]
+margin_left = 72.0
+margin_top = 27.0
+margin_right = 94.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.658824, 0.466667, 0.235294, 1 )
+text = "999"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerInventoryUI" type="Control" parent="."]
+anchor_right = 0.475
+anchor_bottom = 1.0
+margin_right = 0.199982
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="PlayerInventoryUI"]
+position = Vector2( 150, 155 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="PlayerInventoryUI" parent="PlayerInventoryUI" instance=ExtResource( 4 )]

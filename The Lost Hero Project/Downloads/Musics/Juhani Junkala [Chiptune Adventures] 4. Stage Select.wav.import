@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Juhani Junkala [Chiptune Adventures] 4. Stage Select.wav-0808ec8e091fc38d41646764bdfc894c.sample"
+
+[deps]
+
+source_file="res://Downloads/Musics/Juhani Junkala [Chiptune Adventures] 4. Stage Select.wav"
+dest_files=[ "res://.import/Juhani Junkala [Chiptune Adventures] 4. Stage Select.wav-0808ec8e091fc38d41646764bdfc894c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

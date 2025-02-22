@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/SceneChanger/fade.tres" type="Animation" id=1]
+[ext_resource path="res://Scenes/SceneChanger/SceneChanger.gd" type="Script" id=2]
+[ext_resource path="res://PixelArt/UI/SceneChanger/black_circle.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/SceneChanger/black_circle.tres" type="Animation" id=4]
+
+[node name="SceneChanger" type="CanvasLayer"]
+layer = 125
+script = ExtResource( 2 )
+
+[node name="Transitions" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="Control" parent="Transitions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Black" type="ColorRect" parent="Transitions/Fade"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Circle" type="Control" parent="Transitions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Transitions/Circle"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -474.0
+margin_right = 106.0
+margin_bottom = -322.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/black_circle = ExtResource( 4 )
+anims/fade = ExtResource( 1 )

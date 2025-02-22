@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://PixelArt/Buildings/WoodenBridge/bridge.png" type="Texture" id=1]
+[ext_resource path="res://Buildings/Bridges/WoodenBridge.gd" type="Script" id=2]
+[ext_resource path="res://PixelArt/Buildings/WoodenBridge/back_rail.png" type="Texture" id=3]
+[ext_resource path="res://PixelArt/Buildings/WoodenBridge/front_rail.png" type="Texture" id=4]
+[ext_resource path="res://Overlap/AIDetector.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 88.462, 21.5433 )
+
+[node name="WoodenBridge" type="YSort"]
+scale = Vector2( 1.3, 1.4 )
+script = ExtResource( 2 )
+
+[node name="bridge" type="Sprite" parent="."]
+position = Vector2( 0, -86 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 43 )
+
+[node name="back_rail" type="Sprite" parent="."]
+position = Vector2( 0, -55 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 12 )
+
+[node name="front_rail" type="Sprite" parent="."]
+position = Vector2( 0, -10 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -33 )
+
+[node name="Collision" type="StaticBody2D" parent="."]
+position = Vector2( 0, -3.57628e-06 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="TopCollision" type="CollisionPolygon2D" parent="Collision"]
+position = Vector2( 0.396851, -42.9615 )
+polygon = PoolVector2Array( -71.5861, -14.04, -74.1445, -5.72072, -55.0034, -12.0203, -34.1663, -17.195, -13.208, -19.5573, 13.8278, -19.7983, 33.5545, -17.645, 54.0282, -12.1328, 74.9865, -5.83318, 67.9221, -18.5754, 55.1185, -21.2447, 34.2814, -27.0944, 12.8385, -30.2442, -12.2139, -29.6618, -34.315, -26.9573, -54.3602, -21.5482 )
+
+[node name="BottomCollision" type="CollisionPolygon2D" parent="Collision"]
+polygon = PoolVector2Array( -74.2657, -15.0576, -71.7998, -0.0250753, -55.6205, -1.72586, -55.3156, -11.6473, -34.1663, -17.195, -13.208, -19.5573, 13.8278, -19.7983, 33.5545, -17.645, 54.0282, -12.1328, 55.4976, -2.29279, 73.2033, 0.541854, 74.6231, -15.0576, 55.1185, -21.2447, 34.2814, -27.0944, 12.8385, -30.2442, -12.2139, -29.6618, -34.315, -26.9573, -54.3602, -21.5482 )
+
+[node name="RemoveCollisionUp" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 288
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RemoveCollisionUp"]
+polygon = PoolVector2Array( -73.0489, -46.3864, -73.0489, -20.9321, -29.1892, -32.0684, 30.2611, -31.7503, 73.6067, -17.7505, 73.0928, -46.7047, 29.4045, -58.9545, 0.450246, -60.8636, -27.99, -58.7954 )
+
+[node name="CharacterCheck" type="Area2D" parent="."]
+collision_mask = 288
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterCheck"]
+polygon = PoolVector2Array( 51.3332, -5.06064, -82.4124, -2.3608, -81.9278, -55.9075, -61.0906, -56.8074, -59.1523, -72.5565, -11.6629, -86.0556, 30.9806, -86.0556, 56.1791, -74.8063, 61.0249, -59.9572, 86.7079, -58.1573, 86.7079, -4.1607 )
+
+[node name="AIDetector" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AIDetector"]
+position = Vector2( 3.06041, -39.4397 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="RemoveCollisionUp" to="." method="_on_RemoveCollision_body_entered"]
+[connection signal="body_exited" from="RemoveCollisionUp" to="." method="_on_RemoveCollision_body_exited"]
+[connection signal="body_entered" from="CharacterCheck" to="." method="_on_CharacterCheck_body_entered"]
+[connection signal="body_exited" from="CharacterCheck" to="." method="_on_CharacterCheck_body_exited"]

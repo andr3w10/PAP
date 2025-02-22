@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=1]
+[ext_resource path="res://Characters/Pets/Pet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Pets/Cat/Cat.gd" type="Script" id=3]
+[ext_resource path="res://PixelArt/Characters/Pets/cat.png" type="Texture" id=4]
+[ext_resource path="res://Animations/PetsAnimator/Cat/idleRight.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/PetsAnimator/Cat/runRight.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/PetsAnimator/Cat/runLeft.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/PetsAnimator/Cat/idleLeft.tres" type="Animation" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/active = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.03389
+height = 9.237
+
+[node name="Cat" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+pet_name = "Cat"
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -11 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -3 )
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+anims/idleLeft = ExtResource( 8 )
+anims/idleRight = ExtResource( 5 )
+anims/runLeft = ExtResource( 7 )
+anims/runRight = ExtResource( 6 )
+
+[node name="Label" parent="." index="11"]
+text = "CAT"
+
+[editable path="Event"]

@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/Menus/Craft.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Menus/Settings.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/Inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Menus/Map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Menus/Home.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Buttons/InvisibleButtons.tres" type="StyleBox" id=6]
+[ext_resource path="res://UI/Menus/Buttons.gd" type="Script" id=7]
+[ext_resource path="res://UI/Menu.gd" type="Script" id=8]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -0.00109863
+script = ExtResource( 8 )
+
+[node name="Craft" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="Map" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="InventoryTab" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" parent="InventoryTab" instance=ExtResource( 3 )]
+
+[node name="Settings" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Home" parent="." instance=ExtResource( 5 )]
+
+[node name="get_items" type="Button" parent="Home"]
+anchor_left = 0.171
+anchor_top = 0.463
+anchor_right = 0.357
+anchor_bottom = 0.603
+margin_left = -0.128006
+margin_top = -0.1595
+margin_right = 0.223984
+margin_bottom = 0.0406494
+text = "get_items"
+
+[node name="Buttons" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 52.0
+margin_right = 64.0
+margin_bottom = 236.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCraft" type="Button" parent="Buttons"]
+margin_left = 11.0
+margin_top = 146.0
+margin_right = 48.0
+margin_bottom = 175.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMap" type="Button" parent="Buttons"]
+margin_left = 9.0
+margin_top = 112.0
+margin_right = 46.0
+margin_bottom = 141.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonInventory" type="Button" parent="Buttons"]
+margin_left = 8.0
+margin_top = 77.0
+margin_right = 45.0
+margin_bottom = 106.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSettings" type="Button" parent="Buttons"]
+margin_left = 6.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 72.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonHome" type="Button" parent="Buttons"]
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 41.0
+margin_bottom = 37.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+
+[connection signal="pressed" from="Home/get_items" to="Buttons" method="_on_get_items_pressed"]
+[connection signal="mouse_entered" from="Buttons/ButtonCraft" to="Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Buttons/ButtonCraft" to="." method="_on_ButtonCraft_pressed"]
+[connection signal="pressed" from="Buttons/ButtonCraft" to="Buttons" method="_on_pressed"]
+[connection signal="mouse_entered" from="Buttons/ButtonMap" to="Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Buttons/ButtonMap" to="." method="_on_ButtonMap_pressed"]
+[connection signal="pressed" from="Buttons/ButtonMap" to="Buttons" method="_on_pressed"]
+[connection signal="mouse_entered" from="Buttons/ButtonInventory" to="Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Buttons/ButtonInventory" to="." method="_on_ButtonInventory_pressed"]
+[connection signal="pressed" from="Buttons/ButtonInventory" to="Buttons" method="_on_pressed"]
+[connection signal="mouse_entered" from="Buttons/ButtonSettings" to="Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Buttons/ButtonSettings" to="." method="_on_ButtonSettings_pressed"]
+[connection signal="pressed" from="Buttons/ButtonSettings" to="Buttons" method="_on_pressed"]
+[connection signal="mouse_entered" from="Buttons/ButtonHome" to="Buttons" method="_on_mouse_entered"]
+[connection signal="pressed" from="Buttons/ButtonHome" to="." method="_on_ButtonHome_pressed"]
+[connection signal="pressed" from="Buttons/ButtonHome" to="Buttons" method="_on_pressed"]

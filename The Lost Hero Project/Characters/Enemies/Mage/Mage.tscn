@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Characters/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Enemies/Mage/DkWx4OeX4AAkFUG.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Enemies/Mage/MageFSM.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Enemies/Mage/Mage.gd" type="Script" id=4]
+[ext_resource path="res://Animations/Mage/attack.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Mage/telegraph.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.25002
+height = 9.74997
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 14.4625
+height = 8.84732
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 15.0
+
+[node name="Mage" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+move_speed = 3.0
+wander_speed = 1.0
+attack_range = 72.0
+
+[node name="StateMachine" parent="." index="1"]
+script = ExtResource( 3 )
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="0"]
+use_parent_material = true
+position = Vector2( 1, -18 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+
+[node name="FirePoint" type="Node2D" parent="Body/Pivot" index="0"]
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -5 )
+shape = SubResource( 2 )
+
+[node name="Hitbox" parent="." index="5"]
+collision_mask = 2147485696
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -18.125 )
+shape = SubResource( 3 )
+
+[node name="NeighborDetector" parent="." index="7"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+anims/attack = ExtResource( 5 )
+anims/telegraph = ExtResource( 6 )
+
+[node name="LightSource" parent="." index="9"]
+position = Vector2( 0, -16 )
+
+[node name="Label" type="Label" parent="." index="11"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

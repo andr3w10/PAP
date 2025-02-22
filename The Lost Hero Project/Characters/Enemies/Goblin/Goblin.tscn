@@ -1,0 +1,93 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Characters/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Animations/Goblin/dieLeft.tres" type="Animation" id=2]
+[ext_resource path="res://PixelArt/Characters/Enemies/Goblin/goblin.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Enemies/Goblin/GoblinFSM.gd" type="Script" id=4]
+[ext_resource path="res://Characters/Enemies/Goblin/Goblin.gd" type="Script" id=5]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=6]
+[ext_resource path="res://Animations/Goblin/idleLeft.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Goblin/idleRight.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Goblin/runRight.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Goblin/runLeft.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Goblin/dieRight.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Goblin/attackLeft.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Goblin/attackRight.tres" type="Animation" id=13]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/active = false
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 2.44496
+height = 8.85104
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 9.124
+height = 10.8986
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 9.87157
+
+[node name="Goblin" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+move_speed = 4.0
+max_health = 6
+
+[node name="DebugNode" parent="." index="0"]
+visible = false
+
+[node name="StateMachine" parent="." index="1"]
+script = ExtResource( 4 )
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="0"]
+use_parent_material = true
+position = Vector2( 0, -21.6667 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
+hframes = 6
+vframes = 8
+frame = 7
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 2 )
+
+[node name="AttackCooldown" parent="Timers" index="0"]
+wait_time = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -14.7435 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+autoplay = "idleLeft"
+anims/attackLeft = ExtResource( 12 )
+anims/attackRight = ExtResource( 13 )
+anims/dieLeft = ExtResource( 2 )
+anims/dieRight = ExtResource( 11 )
+anims/idleLeft = ExtResource( 7 )
+anims/idleRight = ExtResource( 8 )
+anims/runLeft = ExtResource( 10 )
+anims/runRight = ExtResource( 9 )
+
+[node name="LightSource" parent="." index="9"]
+position = Vector2( 0, -16 )
+
+[node name="Label" type="Label" parent="." index="11"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="immunity_ended" from="Hitbox" to="." method="_on_Hitbox_immunity_ended"]

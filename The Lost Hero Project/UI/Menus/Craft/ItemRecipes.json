@@ -1,0 +1,22 @@
+{
+	"Bread":{
+		"CraftCode": "001",
+		"0": "Wheat",
+		"1": "Wheat",
+	},
+	"MagicStick":{
+		"CraftCode": "002",
+		"0": "Wood",
+		"1": "Wood",
+		"2": "Coin",
+		"3": "Coin",
+		"4": "Coin",
+	},
+	"Axe":{
+		"CraftCode": "003",
+		"0": "Wood",
+		"1": "Wood",
+		"2": "Brick",
+		"3": "Brick",
+	},
+}

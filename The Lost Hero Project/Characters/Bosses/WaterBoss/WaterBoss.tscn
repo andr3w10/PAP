@@ -1,0 +1,127 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Characters/Bosses/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Bosses/WaterBoss/WaterBossFSM.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Bosses/WaterBoss/WaterBoss.gd" type="Script" id=3]
+[ext_resource path="res://PixelArt/Bosses/water_boss.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Bosses/Water/idle_right.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Bosses/Water/idle_left.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Bosses/Water/run_right.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Bosses/Water/run_left.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Bosses/Water/attack_right.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Bosses/Water/attack_left.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Bosses/Water/die_right.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Bosses/Water/die_left.tres" type="Animation" id=12]
+[ext_resource path="res://Overlap/DamageArea.tscn" type="PackedScene" id=13]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 25.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 15.8264
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 37.0344
+height = 67.9988
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 16.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="WaterBoss" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+move_speed = 8.0
+max_health = 40
+player_start_fight_position = Vector2( 25, -1170 )
+boss_name = "Water Boss"
+dialogue_id = "2000"
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -48 )
+scale = Vector2( 0.375, 0.375 )
+texture = ExtResource( 4 )
+hframes = 32
+vframes = 8
+frame = 103
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -32 )
+shape = SubResource( 2 )
+
+[node name="NeighborDetector" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+shape = SubResource( 3 )
+
+[node name="DamageArea" parent="." index="6" instance=ExtResource( 13 )]
+collision_layer = 2147484672
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
+position = Vector2( -28, -48 )
+rotation = 0.279253
+shape = SubResource( 4 )
+disabled = true
+
+[node name="AnimationPlayer" parent="." index="8"]
+autoplay = "idle_right"
+anims/RESET = SubResource( 5 )
+anims/attack_left = ExtResource( 10 )
+anims/attack_right = ExtResource( 9 )
+anims/die_left = ExtResource( 12 )
+anims/die_right = ExtResource( 11 )
+anims/idle_left = ExtResource( 6 )
+anims/idle_right = ExtResource( 5 )
+anims/run_left = ExtResource( 8 )
+anims/run_right = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="." index="10"]
+margin_top = 16.0
+margin_right = 40.0
+margin_bottom = 30.0

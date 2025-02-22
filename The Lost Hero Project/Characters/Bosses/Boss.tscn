@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Others/SFX/damaged.wav" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Bosses/BossesStateMachine.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Bosses/Boss.gd" type="Script" id=4]
+[ext_resource path="res://Overlap/NeighborDetector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Inventory/LootDrop/LootDrop.tscn" type="PackedScene" id=6]
+
+[node name="Boss" type="KinematicBody2D" groups=["Bosses", "Enemies"]]
+collision_layer = 160
+script = ExtResource( 4 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="Body"]
+
+[node name="LootDrop" parent="Body" instance=ExtResource( 6 )]
+tier = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+disabled = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="StartFightDelay" type="Timer" parent="Timers"]
+wait_time = 4.0
+one_shot = true
+
+[node name="AttackPreparation" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="RechargeTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 0
+collision_mask = 2048
+
+[node name="NeighborDetector" parent="." instance=ExtResource( 5 )]
+
+[node name="DamageAnimator" type="AnimationPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DamagedAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 2 )
+bus = "Effects"
+
+[connection signal="drop_loot" from="." to="Body/LootDrop" method="_on_Enemy_drop_loot"]
+[connection signal="timeout" from="Timers/StartFightDelay" to="." method="_on_StartFightDelay_timeout"]
+[connection signal="damaged" from="Hitbox" to="." method="_on_Hitbox_damaged"]

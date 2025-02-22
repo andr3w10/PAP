@@ -1,0 +1,209 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Characters/Bosses/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Bosses/EarthBoss/EarthBossFSM.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Bosses/EarthBoss/EarthBoss.gd" type="Script" id=3]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/left_arm.png" type="Texture" id=4]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/right_arm.png" type="Texture" id=5]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/legs.png" type="Texture" id=6]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/shadow_left_arm.png" type="Texture" id=7]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/shadow_right_arm.png" type="Texture" id=8]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/body.png" type="Texture" id=9]
+[ext_resource path="res://PixelArt/Bosses/earth_boss/shadow_body.png" type="Texture" id=10]
+[ext_resource path="res://Animations/Bosses/Earth/idle.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Bosses/Earth/move_left.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Bosses/Earth/move_right.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Bosses/Earth/shockwave.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/Bosses/Earth/shockwave_left.tres" type="Animation" id=15]
+[ext_resource path="res://Animations/Bosses/Earth/shockwave_right.tres" type="Animation" id=16]
+[ext_resource path="res://Animations/Bosses/Earth/die.tres" type="Animation" id=17]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 4.51866
+height = 25.2942
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 31.2019
+height = 43.9673
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 18.8996
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/LeftArm/LeftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Legs:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/RightArm/RightArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/RightArm/RightArm:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/LeftArm/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/RightArm/RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="EarthBoss" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+move_speed = 3.0
+detect_distance = 1536.0
+boss_name = "Joca, the Golem"
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="Body" parent="." index="1"]
+position = Vector2( 0, -58 )
+
+[node name="ShadowBody" type="Sprite" parent="Body" index="0"]
+texture = ExtResource( 10 )
+hframes = 12
+vframes = 5
+
+[node name="ShadowLeftArm" type="KinematicBody2D" parent="Body" index="1"]
+
+[node name="ShadowLeftArm" type="Sprite" parent="Body/ShadowLeftArm" index="0"]
+texture = ExtResource( 7 )
+
+[node name="ShadowRightArm" type="KinematicBody2D" parent="Body" index="2"]
+
+[node name="ShadowRightArm" type="Sprite" parent="Body/ShadowRightArm" index="0"]
+texture = ExtResource( 8 )
+
+[node name="Body" type="Sprite" parent="Body" index="3"]
+texture = ExtResource( 9 )
+hframes = 12
+vframes = 5
+
+[node name="Legs" type="Sprite" parent="Body" index="4"]
+texture = ExtResource( 6 )
+hframes = 12
+vframes = 5
+
+[node name="LeftArm" type="KinematicBody2D" parent="Body" index="5"]
+
+[node name="LeftArm" type="Sprite" parent="Body/LeftArm" index="0"]
+texture = ExtResource( 4 )
+hframes = 12
+vframes = 5
+
+[node name="RightArm" type="KinematicBody2D" parent="Body" index="6"]
+
+[node name="RightArm" type="Sprite" parent="Body/RightArm" index="0"]
+texture = ExtResource( 5 )
+hframes = 12
+vframes = 5
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, -3 )
+rotation = -1.5708
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, -58 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighborDetector" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="7"]
+anims/RESET = SubResource( 1 )
+anims/die = ExtResource( 17 )
+anims/idle = ExtResource( 11 )
+anims/move_left = ExtResource( 12 )
+anims/move_right = ExtResource( 13 )
+anims/shockwave = ExtResource( 14 )
+
+[node name="ArmsAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+anims/RESET = SubResource( 6 )
+anims/shockwave_left = ExtResource( 15 )
+anims/shockwave_right = ExtResource( 16 )

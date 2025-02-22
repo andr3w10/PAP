@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/HandItems/MagicStick.gd" type="Script" id=1]
+[ext_resource path="res://PixelArt/Weapons/magic_stick.png" type="Texture" id=2]
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 16.0
+
+[node name="MagicStick" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+item_name = "MagicStick"
+
+[node name="Sprite" parent="Pivot" index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DamageArea" index="0"]
+position = Vector2( 8, 0 )
+rotation = -1.5708
+shape = SubResource( 1 )

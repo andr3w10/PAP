@@ -1,0 +1,163 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PixelArt/UI/Menus/menu_settings.png" type="Texture" id=1]
+[ext_resource path="res://Others/Fonts/AncientModernTales-a7Po.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/Menus/Settings.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 2 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+fullscreen_btn = NodePath("Resolutions/Fullscreen")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Master" type="HSlider" parent="Audio"]
+margin_left = 400.0
+margin_top = 112.0
+margin_right = 480.0
+margin_bottom = 128.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Audio/Master"]
+margin_left = -78.0
+margin_top = -8.0
+margin_right = -6.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.607843, 0.431373, 0.219608, 1 )
+text = "Master"
+align = 1
+valign = 1
+
+[node name="Music" type="HSlider" parent="Audio"]
+margin_left = 400.0
+margin_top = 152.0
+margin_right = 480.0
+margin_bottom = 168.0
+min_value = -80.0
+max_value = 0.0
+value = -15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Audio/Music"]
+margin_left = -78.0
+margin_top = -8.0
+margin_right = -6.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.607843, 0.431373, 0.219608, 1 )
+text = "Music"
+align = 1
+valign = 1
+
+[node name="Effects" type="HSlider" parent="Audio"]
+margin_left = 400.0
+margin_top = 192.0
+margin_right = 480.0
+margin_bottom = 208.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Audio/Effects"]
+margin_left = -78.0
+margin_top = -8.0
+margin_right = -6.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.607843, 0.431373, 0.219608, 1 )
+text = "Effects"
+align = 1
+valign = 1
+
+[node name="Interface" type="HSlider" parent="Audio"]
+margin_left = 400.0
+margin_top = 232.0
+margin_right = 480.0
+margin_bottom = 248.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Audio/Interface"]
+margin_left = -78.0
+margin_top = -8.0
+margin_right = -6.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.607843, 0.431373, 0.219608, 1 )
+text = "Interface"
+align = 1
+valign = 1
+
+[node name="Resolutions" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Fullscreen" type="CheckBox" parent="Resolutions"]
+margin_left = 139.241
+margin_top = 86.3131
+margin_right = 163.241
+margin_bottom = 110.313
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Resolutions/Fullscreen"]
+margin_left = -70.8838
+margin_top = 0.887596
+margin_right = 8.11621
+margin_bottom = 25.8876
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.607843, 0.431373, 0.219608, 1 )
+text = "Fullscreen"
+
+[connection signal="value_changed" from="Audio/Master" to="." method="_on_Master_value_changed"]
+[connection signal="value_changed" from="Audio/Music" to="." method="_on_Music_value_changed"]
+[connection signal="value_changed" from="Audio/Effects" to="." method="_on_Effects_value_changed"]
+[connection signal="value_changed" from="Audio/Interface" to="." method="_on_Interface_value_changed"]
+[connection signal="toggled" from="Resolutions/Fullscreen" to="." method="_on_Fullscreen_toggled"]

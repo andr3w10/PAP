@@ -1,0 +1,77 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Characters/Pets/Pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PixelArt/Characters/Pets/falcon.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Pets/Falcon/Falcon.gd" type="Script" id=3]
+[ext_resource path="res://Animations/DamageAnimator/white_damage.shader" type="Shader" id=4]
+[ext_resource path="res://PixelArt/Characters/Pets/falconShadow.png" type="Texture" id=5]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/idleRight.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/idleLeft.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/takeoffLeft.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/takeoffRight.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/flyLeft.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/PetsAnimator/Falcon/flyRight.tres" type="Animation" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/active = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.29581
+height = 0.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Falcon" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+pet_name = "Falcon"
+
+[node name="Body" parent="." index="2"]
+material = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="Body" index="0"]
+position = Vector2( 0, -12 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" parent="Body" index="1"]
+position = Vector2( -1, -14 )
+texture = ExtResource( 2 )
+hframes = 8
+vframes = 6
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -5 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+autoplay = "idleRight"
+anims/RESET = SubResource( 3 )
+anims/idleLeft = ExtResource( 7 )
+anims/idleRight = ExtResource( 6 )
+anims/runLeft = ExtResource( 10 )
+anims/runRight = ExtResource( 11 )
+anims/takeoffLeft = ExtResource( 8 )
+anims/takeoffRight = ExtResource( 9 )
+
+[node name="LightSource" parent="." index="9"]
+position = Vector2( 0, -16 )
+
+[node name="Label" parent="." index="11"]
+text = "FALCON"
+
+[editable path="Event"]

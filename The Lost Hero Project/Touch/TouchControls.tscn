@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PixelArt/Attack/Attack.png" type="Texture" id=1]
+[ext_resource path="res://Touch/TouchControls.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[node name="TouchControls" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="TouchScreenMoveButton" type="TouchScreenButton" parent="."]
+position = Vector2( 32, 224 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )

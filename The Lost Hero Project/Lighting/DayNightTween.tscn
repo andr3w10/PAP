@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="DayNightTween" type="Tween"]
+pause_mode = 2

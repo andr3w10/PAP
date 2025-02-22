@@ -1,0 +1,480 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  --hue: 14;
+  --nav-text-color: hsl(31, 25%, 64%);
+  --first-color: hsl(var(--hue), 91%, 54%);
+  --first-color-alt: hsl(var(--hue), 91%, 50%);
+  --title-color: hsl(var(--hue), 4%, 100%);
+  --text-color: hsl(var(--hue), 4%, 85%);
+  --text-color-light: hsl(var(--hue), 4%, 55%);
+
+  /*Green gradient*/
+  /*--body-color: linear-gradient(90deg, hsl(104, 28%, 40%) 0%, hsl(58, 28%, 40%) 100%);
+  --container-color: linear-gradient(136deg, hsl(104, 28%, 40%) 0%, hsl(58, 28%, 40%) 100%);*/
+  
+  /*Red gradient*/
+  /*--body-color: linear-gradient(90deg, hsl(360, 28%, 40%) 0%, hsl(18, 28%, 40%) 100%);
+  --container-color: linear-gradient(136deg, hsl(360, 28%, 35%) 0%, hsl(18, 28%, 35%) 100%);*/
+
+  /*Blue gradient*/
+  --body-color: linear-gradient(90deg, hsl(180, 28%, 40%) 0%, hsl(150, 28%, 40%) 100%);
+  --container-color: linear-gradient(136deg, hsl(180, 28%, 33%) 0%, hsl(149, 28%, 34%) 100%);
+
+  /*Black solid*/
+  /*--body-color: hsl(30, 8%, 8%);
+  --container-color: hsl(30, 8%, 10%);*/
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-black: 900;
+
+  /*========== Margenes Bottom ==========*/
+  --mb-0-25: .25rem;
+  --mb-0-5: .5rem;
+  --mb-0-75: .75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 992px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+*::before,
+*::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  overflow-y: hidden; /*cancel scroll*/
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,h2,h3,h4{
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input{
+  border: none;
+  outline: none;
+}
+
+button{
+  cursor: pointer;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.section{
+  padding: 4.5rem 0 2rem;
+}
+
+.section{
+  font-size: var(--h2-font-size);
+  margin-bottom: var(--mb-2);
+  text-align: center;
+}
+
+/*=============== LAYOUT ===============*/
+
+.container{
+  /*max-width: 968px;*/
+  max-width: 1200px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+.grid{
+  display: grid;
+}
+
+.main{
+  overflow: hidden; /*Use in animations*/
+}
+
+/*=============== HEADER ===============*/
+
+.header{
+  width: 100%;
+  background: var(--body-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+}
+
+/*=============== NAV ===============*/
+
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav.container{
+  max-width: 1400px;
+}
+
+.nav_logo{
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  font-weight: var(--font-semi-bold);
+}
+
+.nav_logo-img{
+  width: 1.5rem;
+}
+
+.nav_logo-txt{
+  color: var(--nav-text-color)
+}
+
+.nav_link,
+.nav_logo,
+.nav_toggle,
+.nav_close{
+  color: var(--title-color);
+}
+
+.nav_toggle{
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 950px){
+  .nav_menu{
+    position: fixed;
+    width: 100%;
+    background: var(--container-color);
+    top: -150%;
+    left: 0;
+    padding: 3.5rem 0;
+    transition: .3s;
+    z-index: var(--z-fixed);
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+
+  .box{
+    position: fixed;
+    padding: 10rem 0;
+  }
+}
+
+.nav_img{
+  width: 100px;
+  position: absolute;
+  top: 1.3rem;
+  left: 1rem;
+}
+
+.nav_close{
+  font-size: 1.8rem;
+  position: absolute;
+  top: .5rem;
+  right: .7rem;
+  cursor: pointer;
+}
+
+.nav_list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.5rem;
+}
+
+.nav_link{
+  text-transform: uppercase;
+  font-weight: var(--font-black);
+  transition: .3s;
+}
+
+.nav_link:hover{
+  color: var(--text-color);
+}
+
+/*show menu*/
+.show-menu{
+  top: 0;
+}
+
+/*change header color*/
+.scroll-header{
+  background: var(--container-color);
+}
+
+/* Active link */
+.active-link{
+  position: relative;
+}
+
+.active-link::before{
+  content: '';
+  position: absolute;
+  bottom: -.75rem;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  background-color: var(--title-color);
+  border-radius: 50%;
+}
+
+
+/*=============== FOOTER ===============*/
+.footer{
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .footer_container{
+    row-gap: 2rem;
+  }
+  
+  .footer_copy{
+    display: block;
+    text-align: center;
+    font-size: var(--smaller-font-size);
+    margin-top: 4.5rem;
+  }
+
+
+/*=============== SCROLL UP ===============*/
+.scrollup{
+    position: fixed;
+    background: var(--container-color);
+    right: 1rem;
+    bottom: -20%;
+    display: inline-flex;
+    padding: .3rem;
+    border-radius: .25rem;
+    z-index: var(--z-tooltip);
+    opacity: .8;
+    transition: .4s;
+  }
+  
+  .scrollup_icon{
+    font-size: 1.25rem;
+    color: var(--title-color);
+  }
+  
+  .scrollup:hover{
+    background: var(--container-color);
+    opacity: 1;
+  }
+  
+  /* Show Scroll Up*/
+  .show-scroll{
+    bottom: 3rem;
+  }
+
+
+
+  /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+    width: 0.6rem;
+    background: #413e3e;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background: #272525;
+    border-radius: .5rem;
+  }
+
+
+  /*=============== TABLE ===============*/
+  .p_table{
+    width:100%;
+    table-layout: fixed;
+  }
+  .tbl-header{
+    background-color: rgba(255,255,255,0.3);
+   }
+  .tbl-content{
+    height:400px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .p_th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .p_td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+  }
+  
+  .p_section{
+    top: 20%;
+    margin: 30px;
+  }
+  
+  
+
+
+/*===============  BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+    .container{
+      margin-left: var(--mb-1);
+      margin-right: var(--mb-1);
+    }
+  }
+  
+  /* For medium devices */
+  @media screen and (min-width: 576px) and (min-height: 800px){
+
+  }
+  
+  @media screen and (min-width: 950px){
+    body{
+      margin: 0;
+    }
+  
+    .section{
+      padding: 7rem 0 2rem;
+    }
+  
+    .section.purchase{
+      padding: 4.5rem 0 2rem;
+    }
+  
+    .nav{
+      height: calc(var(--header-height) + 1.5rem);
+    }
+    .nav_img,
+    .nav_close,
+    .nav_toggle{
+      display: none;
+    }
+    .nav_list{
+      flex-direction: row;
+      column-gap: 2.5rem;
+    }
+    .nav_link{
+      text-transform: initial;
+      font-weight: initial;
+    }
+  
+  }
+  
+  /* For large devices */
+  @media screen and (min-width: 992px){
+    .container{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .nav.container{
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+  
+    .section_title{
+      font-size: var(--h1-font-size);
+      margin-bottom: 3rem;
+    }
+  
+    .section_subtitle{
+      font-size: var(--h2-font-size);
+      color: var(--nav-text-color);
+      margin-bottom: 3rem;
+    }
+  
+  }
+  
+  @media screen and (min-width: 1080px){
+    
+  }
+  
+  @media screen and (min-width: 1150px){
+    
+  }
+  
+  @media screen and (min-width: 1320px){
+    
+  }
+  
+  @media screen and (min-width: 1450px){
+    .nav.container{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+  }

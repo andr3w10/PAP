@@ -1,0 +1,8 @@
+#preloader{
+    background: hsla(149, 27%, 39%, 0.801) url("../img/page/loader2.gif") no-repeat center center;
+    background-size: 30%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 200;
+}

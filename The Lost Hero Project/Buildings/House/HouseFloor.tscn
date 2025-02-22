@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="HouseFloor" type="TextureRect"]
+margin_right = 24.0
+margin_bottom = 24.0
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
